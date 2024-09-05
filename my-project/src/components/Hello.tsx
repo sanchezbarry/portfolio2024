@@ -3,11 +3,12 @@ import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image"
 
 export default function Hello() {
-  const words = ["Software Engineer", "Frontend Developer", "Backend Builder"];
+  const words = ["Software Engineer", "Frontend Dev", "Backend Builder"];
 
   return (
-    <div className="h-[37rem] flex justify-center items-center px-4">
-      <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+    <>
+    <div className="h-[25rem] flex justify-center items-center px-4 pt-20">
+      <div className="text-3xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
         <div>
         <Image
             src="/headshot.jpeg"
@@ -27,7 +28,18 @@ export default function Hello() {
         <br />
         <FlipWords className="mx-auto" words={words} /> 
         </div>
+
       </div>
+
     </div>
+          <div className="max-w-4xl text-md mx-auto font-normal text-neutral-600 dark:text-neutral-400 justify-center items-center px-4">
+          <p>
+          A marketer turned software engineer, after discovering my love for coding after dabbling with a few websites. I'm excited to use my experience as a marketer to build apps that are intuitive and feel like second nature to use.
+          <br />
+          <br />
+          Here some things I've created, and the technologies I'm familiar with.
+          </p>
+      </div>
+      </>
   );
 }
