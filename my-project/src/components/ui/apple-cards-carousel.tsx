@@ -229,8 +229,8 @@ export const Card = ({
               
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
-                className="relative grid select-none items-center whitespace-nowrap rounded-full bg-white py-1.5 px-3 font-sans text-xs font-bold uppercase text-black"
-                // className="text-base font-medium text-black dark:text-white"
+                // className="relative grid select-none items-center whitespace-nowrap rounded-full bg-white py-1.5 px-3 font-sans text-xs font-bold uppercase text-black"
+                className="text-base font-medium text-black dark:text-white"
               >
                 {card.tech}
               </motion.p>

@@ -61,7 +61,7 @@ const DummyContent = () => {
 const data = [
   {
     category: "Coffee has many, many permutations.",
-    tech: "test",
+    tech: "MongoDB Express JS Node JS JavaScript CSS (Bootstrap) CRUD",
     title: "Bean there, Done that",
     src: "/coffee.jpg",
     content: <DummyContent />,
