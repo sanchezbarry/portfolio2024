@@ -7,7 +7,7 @@ export default function Hello() {
 
   return (
     <>
-    <div className="h-[25rem] flex justify-center items-center px-4 pt-20">
+    <div className="h-[27rem] flex justify-center items-center px-4 pt-20">
       <div className="text-3xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
         <div>
         <Image

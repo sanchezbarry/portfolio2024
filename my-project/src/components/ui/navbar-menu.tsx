@@ -13,17 +13,52 @@ const transition = {
   restSpeed: 0.001,
 };
 
-export const MenuLogo = ()=> {
+export const MenuLogo = ({
+  setActive,
+  active,
+  item
+} : {
+  setActive: (item: string) => void;
+  active: string | null;
+  item: string;
+})=> {
   return (
+  <div onMouseEnter={() => setActive(item)} className="relative ">
   <Link href={"/"} className="flex space-x-2">
   <Image
         src="/Sanchez_Logo_white-Icon.svg"
-        width={20}
-        height={20}
+        width={26}
+        height={26}
         alt={"logo"}
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
   </Link>
+  </div>
+  )
+}
+
+export const MenuItemNoChild = ({
+  setActive,
+  active,
+  item,
+  href
+} : {
+  setActive: (item: string) => void;
+  active: string | null;
+  item: string;
+  href: string;
+})=> {
+  return (
+  <div onMouseEnter={() => setActive(item)} className="relative ">
+      <motion.p
+        transition={{ duration: 0.3 }}
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+      >
+        <Link href={href}>
+        {item}
+        </Link>
+      </motion.p>
+  </div>
   )
 }
 
@@ -32,24 +67,26 @@ export const MenuItem = ({
   active,
   item,
   children,
-  href
+  // href
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
-  href: string;
+  // href: string;
 }) => {
   return (
     <div onMouseEnter={() => setActive(item)} className="relative ">
-      <Link href={href}>
+      
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
       >
+        {/* <Link href={href}> */}
         {item}
+        {/* </Link> */}
       </motion.p>
-      </Link>
+      
       {active !== null && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
@@ -57,7 +94,7 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2">
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
@@ -88,7 +125,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-3 mx-3"
+      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-5 mx-3"
     >
       {children}
     </nav>
@@ -129,7 +166,7 @@ export const ProductItem = ({
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <Link
+    <Link rel="noopener noreferrer" target="_blank"
       {...rest}
       className="text-neutral-700 dark:text-neutral-200 hover:text-black "
     >

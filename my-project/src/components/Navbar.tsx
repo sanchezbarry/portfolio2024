@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem, MenuLogo } from "@/components/ui/navbar-menu";
+import { HoveredLink, Menu, MenuItem, ProductItem, MenuLogo, MenuItemNoChild } from "@/components/ui/navbar-menu";
 import { cn } from "@/utils/cn";
 
 const Navbar = ({ className }: { className?: string }) => {
@@ -11,18 +11,18 @@ const Navbar = ({ className }: { className?: string }) => {
         className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
-          <MenuLogo />
+          <MenuLogo setActive={setActive} active={active}/>
 
-          <MenuItem href="/blog" setActive={setActive} active={active} item="Home">
+          {/* <MenuItem href="/blog" setActive={setActive} active={active} item="Home">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/blog">Blog</HoveredLink>
               <HoveredLink href="/interface-design">Interface Design</HoveredLink>
               <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
               <HoveredLink href="/branding">Branding</HoveredLink>
             </div>
-          </MenuItem>
-          <MenuItem href="/blog" setActive={setActive} active={active} item="Dev Notes">
-            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+          </MenuItem> */}
+          <MenuItemNoChild href="/blog" setActive={setActive} active={active} item="Dev Notes" />
+            {/* <div className="  text-sm grid grid-cols-2 gap-10 p-4">
               <ProductItem
                 title="Algochurn"
                 href="https://algochurn.com"
@@ -47,14 +47,13 @@ const Navbar = ({ className }: { className?: string }) => {
                 // src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
                 description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
               />
-            </div>
-          </MenuItem>
-          <MenuItem href="/blog" setActive={setActive} active={active} item="GitHub">
+            </div> */}
+          {/* </MenuItem> */}
+          <MenuItem href="" setActive={setActive} active={active} item="Links">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/hobby">Hobby</HoveredLink>
-              <HoveredLink href="/individual">Individual</HoveredLink>
-              <HoveredLink href="/team">Team</HoveredLink>
-              <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+              <HoveredLink href="https://github.com/sanchezbarry">GitHub</HoveredLink>
+              <HoveredLink href="/individual">LinkedIn</HoveredLink>
+              <HoveredLink href="/team">Resume</HoveredLink>
             </div>
           </MenuItem>
         </Menu>
