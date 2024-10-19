@@ -11,7 +11,7 @@ const Navbar = ({ className }: { className?: string }) => {
         className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
-          <MenuLogo setActive={setActive} active={active}/>
+          <MenuLogo setActive={setActive} active={active} item="Home"/>
 
           {/* <MenuItem href="/blog" setActive={setActive} active={active} item="Home">
             <div className="flex flex-col space-y-4 text-sm">
@@ -49,11 +49,12 @@ const Navbar = ({ className }: { className?: string }) => {
               />
             </div> */}
           {/* </MenuItem> */}
-          <MenuItem href="" setActive={setActive} active={active} item="Links">
+          <MenuItem setActive={setActive} active={active} item="Links">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="https://github.com/sanchezbarry">GitHub</HoveredLink>
-              <HoveredLink href="/individual">LinkedIn</HoveredLink>
+              <HoveredLink href="https://www.linkedin.com/in/sanchez-barry/">LinkedIn</HoveredLink>
               <HoveredLink href="/team">Resume</HoveredLink>
+              <HoveredLink href="/me">Other Stuff</HoveredLink>
             </div>
           </MenuItem>
         </Menu>

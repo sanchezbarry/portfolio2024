@@ -245,11 +245,11 @@ const SanchezOneContent = () => {
         </button>
         </Link>
 
-        <Link href="https://cck.org.sg/sermons.html">
+        {/* <Link href="https://cck.org.sg/sermons.html">
         <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
           Website
         </button>
-        </Link>
+        </Link> */}
     </>
   );
 };
