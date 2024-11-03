@@ -37,7 +37,7 @@ const CoffeeContent = () => {
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
               Coffee has many, many permutations.
               </span>{" "}
-              From the bean used, to the grind size, the temperature, time and more! This website helps baristas and coffee enthusiats alike to keep track of what permutations they've done, and what works best. This website features a full CRUD and user authentication system. Users can read, create, edit and delete recepies. Note: This website takes awhile to load, please be patient!
+              From the bean used, to the grind size, the temperature, time and more! This website helps baristas and coffee enthusiats alike to keep track of what permutations they&apos;ve done, and what works best. This website features a full CRUD and user authentication system. Users can read, create, edit and delete recepies. Note: This website takes awhile to load, please be patient!
             </p>
 
       </div>
@@ -193,7 +193,7 @@ const ChurchContent = () => {
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
               Missed a service? 
               </span>{" "}
-              A simple one-pager for a church's sermons to be hosted and played. The sermons are also searchable by sermon title, and a random verse can also be generated.
+              A simple one-pager for a church&apos;s sermons to be hosted and played. The sermons are also searchable by sermon title, and a random verse can also be generated.
             </p>
 
       </div>
