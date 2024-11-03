@@ -297,7 +297,7 @@ const SanchezTwoContent = () => {
 const data = [
   {
     category: "A website to show off my skills and projects.",
-    tech: "NextJS | React | TailwindCSS | Aceternity UI | JavaScript | CRUD",
+    tech: "NextJS | React | TailwindCSS | Aceternity UI | TypeScript | CRUD",
     title: "sanchezbarry.com (This Website)",
     src: "/sanchezbarry2.jpg",
     content: <SanchezTwoContent />,
