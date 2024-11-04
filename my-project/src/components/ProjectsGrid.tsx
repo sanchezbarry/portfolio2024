@@ -234,6 +234,8 @@ const SanchezOneContent = () => {
               </span>{" "}
               This portfolio website to show off my skills and projects. React, with react router to navigatae between pages and beautified with Material UI. I had also wanted to attempt using a custom domain for the first time.
               For this, I used GH-pages for the deployment and Google domains for my custom domain.
+              Vanilla react, React Router and beautified with MUI and Framer Motion for animations. So in the next version, I decided to really customise the site to how I wanted it to look like
+              with animated components and a blog with a backend to both showcase the journey of building this website and my overall learning journey as a software engineer.
             </p>
 
       </div>
@@ -270,10 +272,11 @@ const SanchezTwoContent = () => {
             />
             <p className="pt-5 text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
-              Honestly, sanchezbarry 1.0 was good enough.
+              I wanted to make a new, improved version of my website.
               </span>{" "}
-              Vanilla react, React Router and beautified with MUI and Framer Motion for animations. So in the next version, I decided to really customise the site to how I wanted it to look like
+              NextJS, with industry standard TypeScript over vanilla JS. In this version, I decided to really customise the site to how I wanted it to look like
               with animated components and a blog with a backend to both showcase the journey of building this website and my overall learning journey as a software engineer. 
+              Some parts of this website are still WIP.
             </p>
 
       </div>

@@ -42,7 +42,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           My Career so far.
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-          My journey as a Software Engineer has just begun! Here&apos;s
+          My journey as a Software Engineer! Here&apos;s
           what I&apos;ve done so far.
         </p>
       </div>
