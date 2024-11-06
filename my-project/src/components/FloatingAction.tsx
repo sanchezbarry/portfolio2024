@@ -4,37 +4,40 @@ import { FloatingButton, FloatingButtonItem } from '@/components/ui/floating-but
 import { cn } from "@/utils/cn";
 import { PhoneOutgoing, Github, LinkedinIcon, PlusIcon, ArrowUp } from 'lucide-react';
 import Link from "next/link";
-import Button from  "next"
-
+import Button from "next";
 
 export default function FloatingButtonExample() {
 
-  const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
+  const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
 
   function scrollToTop() {
-      if (!isBrowser()) return;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const items = [
     {
       icon: <ArrowUp onClick={scrollToTop} />,
-      bgColor: 'bg-[#707070]'
+      bgColor: 'bg-[#707070]',
+      isLink: false, // indicates this is not a link but a button
     },
-
     {
-      icon: <Link href="https://github.com/sanchezbarry" target="_blank"><Github /></Link>,
-      bgColor: 'bg-[#171515]'
+      icon: <Github />,
+      bgColor: 'bg-[#171515]',
+      isLink: true, // link to GitHub
+      href: "https://github.com/sanchezbarry"
     },
-
     {
-      icon: <Link href="https://www.linkedin.com/in/sanchez-barry/" target="_blank"><LinkedinIcon /></Link>,
-      bgColor: 'bg-[#0a66c2]'
-
-    },    
+      icon: <LinkedinIcon />,
+      bgColor: 'bg-[#0a66c2]',
+      isLink: true, // link to LinkedIn
+      href: "https://www.linkedin.com/in/sanchez-barry/"
+    },
     {
-      icon: <Link href="https://wa.me/6596962639" target="_blank"><PhoneOutgoing /></Link>,
-      bgColor: 'bg-[#25D366]'
+      icon: <PhoneOutgoing />,
+      bgColor: 'bg-[#25D366]',
+      isLink: true, // link to WhatsApp
+      href: "https://wa.me/6596962639"
     },
   ];
 
@@ -47,13 +50,21 @@ export default function FloatingButtonExample() {
       }>
       {items.map((item, key) => (
         <FloatingButtonItem key={key}>
-          <button
-            className={cn(
-              'h-12 w-12 rounded-full flex items-center justify-center text-white/80',
-              item.bgColor
-            )}>
-            {item.icon}
-          </button>
+          <div className={cn('h-12 w-12 rounded-full flex items-center justify-center text-white/80', item.bgColor)}>
+            {/* Conditionally render a Link or Button depending on the type */}
+            {item.isLink && item.href ? (
+              <Link href={item.href} target="_blank" className="h-full w-full flex items-center justify-center">
+                {item.icon}
+              </Link>
+            ) : (
+              <button
+                onClick={item.icon.props.onClick}
+                className="h-full w-full flex items-center justify-center"
+              >
+                {item.icon}
+              </button>
+            )}
+          </div>
         </FloatingButtonItem>
       ))}
     </FloatingButton>
