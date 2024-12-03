@@ -49,9 +49,13 @@ const CoffeeContent = () => {
         </button>
         </Link>
 
+
+
         <Link href="https://coffee-cu87.onrender.com/">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
+        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+          
           Website
+          
         </button>
         </Link>
     </>
@@ -88,9 +92,13 @@ const AlcoholContent = () => {
         </button>
         </Link>
 
+
+
         <Link href="https://sanchezbarry.github.io/sanchezbarry/#">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
+        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+          
           Website
+          
         </button>
         </Link>
     </>
@@ -128,10 +136,15 @@ const SoftwareContent = () => {
         </Link>
 
         <Link href="https://lunfy.github.io/Software-Engineer-Job-Portal-Frontend/">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
+        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+          
           Website
+          
         </button>
         </Link>
+
+
+        
     </>
   );
 };
@@ -165,12 +178,7 @@ const WorkoutContent = () => {
           
         </button>
         </Link>
-{/* 
-        <Link href="https://lunfy.github.io/Software-Engineer-Job-Portal-Frontend/">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
-          Website
-        </button>
-        </Link> */}
+
     </>
   );
 };
@@ -205,9 +213,13 @@ const ChurchContent = () => {
         </button>
         </Link>
 
+
+
         <Link href="https://cck.org.sg/sermons.html">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
+        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+          
           Website
+          
         </button>
         </Link>
     </>
@@ -288,11 +300,14 @@ const SanchezTwoContent = () => {
         </button>
         </Link>
 
-        <Link href="https://cck.org.sg/sermons.html">
-        <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
+        <Link href="https://sanchezbarry.com">
+        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+          
           Website
+          
         </button>
         </Link>
+
     </>
   );
 };

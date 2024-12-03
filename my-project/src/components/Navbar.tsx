@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem, MenuLogo, MenuItemNoChild } from "@/components/ui/navbar-menu";
 import { cn } from "@/utils/cn";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Navbar = ({ className }: { className?: string }) => {
     const [active, setActive] = useState<string | null>(null);
@@ -57,6 +58,9 @@ const Navbar = ({ className }: { className?: string }) => {
               <HoveredLink href="/me">Other Stuff</HoveredLink>
             </div>
           </MenuItem>
+
+          {/* <ThemeSwitcher setActive={setActive} active={active}/> */}
+
         </Menu>
       </div>
     )
