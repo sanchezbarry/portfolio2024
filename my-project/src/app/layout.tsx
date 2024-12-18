@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from "next-themes"
 import { Providers } from "./provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter" });
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant-garamond",
+  weight: ["400"]
+})
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "600"]
+})
 
 export const metadata: Metadata = {
   title: "Sanchez Barry | Software Engineer",
@@ -20,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
+      <body className={`${cormorantGaramond.variable} ${poppins.variable} ${inter.variable}`}>
         <Providers>
           <Navbar />
           {children}

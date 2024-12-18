@@ -4,7 +4,6 @@ import { ReactNode, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOnClickOutside } from 'usehooks-ts';
 
-
 type FloatingButtonProps = {
   className?: string;
   children: ReactNode;
@@ -20,26 +19,26 @@ const list = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      staggerDirection: -1
-    }
+      staggerDirection: -1,
+    },
   },
   hidden: {
     opacity: 0,
     transition: {
       when: 'afterChildren',
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const item = {
   visible: { opacity: 1, y: 0 },
-  hidden: { opacity: 0, y: 5 }
+  hidden: { opacity: 0, y: 5 },
 };
 
 const btn = {
   visible: { rotate: '45deg' },
-  hidden: { rotate: 0 }
+  hidden: { rotate: 0 },
 };
 
 function FloatingButton({ className, children, triggerContent }: FloatingButtonProps) {
@@ -51,21 +50,24 @@ function FloatingButton({ className, children, triggerContent }: FloatingButtonP
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-center">
       <AnimatePresence>
-        <motion.ul
-          className="flex flex-col items-center absolute bottom-14 gap-2"
-          initial="hidden"
-          animate={isOpen ? 'visible' : 'hidden'}
-          variants={list}>
-          {children}
-        </motion.ul>
-        <motion.div
-          variants={btn}
-          animate={isOpen ? 'visible' : 'hidden'}
-          ref={ref}
-          onClick={() => setIsOpen(!isOpen)}>
-          {triggerContent}
-        </motion.div>
+        {isOpen && ( // Conditionally render the list only when `isOpen` is true
+          <motion.ul
+            className="flex flex-col items-center absolute bottom-14 gap-2"
+            initial="hidden"
+            animate="visible"
+            exit="hidden" // Exit animation when `isOpen` becomes false
+            variants={list}>
+            {children}
+          </motion.ul>
+        )}
       </AnimatePresence>
+      <motion.div
+        variants={btn}
+        animate={isOpen ? 'visible' : 'hidden'}
+        ref={ref}
+        onClick={() => setIsOpen(!isOpen)}>
+        {triggerContent}
+      </motion.div>
     </div>
   );
 }

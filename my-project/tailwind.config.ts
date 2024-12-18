@@ -20,7 +20,12 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      // fontFamily: {
+      //   cormorantGaramond: ["var(--font-cormorant-garamond", "serif"],
+      //   poppins: ["var(--font-poppins)", "sans-serif"]
+      // }
+    },
   },
   plugins: [addVariablesForColors],
 };
