@@ -1,10 +1,12 @@
 ---
 title: "Dummy first blog to test"
 category: "tech"
-date: "12-18-2024"
+date: "19-12-2024"
 ---
 
 # How to Write Clean Code
+
+![Art](../public/software.jpg)
 
 Writing clean code is an essential skill for any developer. It not only makes your code more readable and maintainable but also makes it easier for others (and future you) to understand and modify. Here are some key principles to follow.
 
