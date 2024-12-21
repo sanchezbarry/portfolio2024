@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tabler/icons-react": "^3.14.0",
+    "@emailjs/browser": "^4.4.1",
+    "@radix-ui/react-label": "^2.1.1",
+    "@tabler/icons-react": "^3.26.0",
     "clsx": "^2.1.1",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^11.3.30",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.454.0",
