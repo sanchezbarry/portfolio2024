@@ -5,6 +5,7 @@ import { Career } from "@/components/Career"
 import FloatingButtonExample from "@/components/FloatingAction"
 import { SayHi } from "@/components/SayHi";
 
+
 export default function Home() {
   return <>
   
@@ -12,6 +13,7 @@ export default function Home() {
   <ProjectsGrid />
   <Career />
   <FloatingButtonExample />
+
   <SayHi />
   </>;
 }

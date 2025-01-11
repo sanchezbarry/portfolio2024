@@ -5,8 +5,12 @@ import { cn } from "@/utils/cn";
 import { PhoneOutgoing, Github, LinkedinIcon, PlusIcon, ArrowUp } from 'lucide-react';
 import Link from "next/link";
 import Button from "next";
+import { useTheme } from 'next-themes';
 
 export default function FloatingButtonExample() {
+  const { theme } = useTheme();
+
+  const iconColor = theme === 'dark' ? 'black' : 'white';
 
   const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
 
@@ -45,7 +49,7 @@ export default function FloatingButtonExample() {
     <FloatingButton
       triggerContent={
         <button className="flex items-center justify-center h-12 w-12 rounded-full bg-black dark:bg-white text-black/100 z-10">
-          <PlusIcon />
+          <PlusIcon color={iconColor}/>
         </button>
       }>
       {items.map((item, key) => (

@@ -1,8 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
+import { useTheme } from 'next-themes';
 
 export function Career() {
+  // const { theme } = useTheme();
+
+  // const logoSrc = theme === 'dark' 
+  //   ? '/galogo.png' 
+  //   : '/galogo2.png';
+  
   const data = [
     {
       title: "2023-2024",

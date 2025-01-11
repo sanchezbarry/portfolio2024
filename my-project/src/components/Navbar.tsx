@@ -59,7 +59,7 @@ const Navbar = ({ className }: { className?: string }) => {
             </div>
           </MenuItem>
 
-          {/* <ThemeSwitcher setActive={setActive} active={active}/> */}
+          <ThemeSwitcher setActive={setActive} active={active}/>
 
         </Menu>
       </div>

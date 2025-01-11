@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from 'next-themes';
 
 const transition = {
   type: "spring",
@@ -12,6 +13,7 @@ const transition = {
   restDelta: 0.001,
   restSpeed: 0.001,
 };
+let logoSrc = '/Sanchez_Logo_white-Icon.svg';
 
 export const MenuLogo = ({
   setActive,
@@ -22,11 +24,15 @@ export const MenuLogo = ({
   active: string | null;
   item: string;
 })=> {
+  const { theme } = useTheme();
+  logoSrc = theme === 'dark' 
+    ? '/Sanchez_Logo_white-Icon.svg' 
+    : '/Sanchez_Logo_Black-Icon.svg';
   return (
   <div onMouseEnter={() => setActive(item)} className="relative ">
   <Link href={"/"} className="flex space-x-2">
   <Image
-        src="/Sanchez_Logo_white-Icon.svg"
+        src={logoSrc}
         width={26}
         height={26}
         alt={"logo"}
@@ -52,7 +58,7 @@ export const MenuItemNoChild = ({
   <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer dark:text-white text-black hover:opacity-[0.9] "
       >
         <Link href={href}>
         {item}
@@ -98,7 +104,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-white dark:bg-zinc-900 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -125,7 +131,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-5 mx-3"
+      className="relative rounded-full border bg-white border-black/5 dark:bg-zinc-900 dark:border-white/[0.2]  shadow-input flex justify-center space-x-4 px-8 py-5 mx-3"
     >
       {children}
     </nav>

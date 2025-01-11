@@ -1,30 +1,41 @@
 import React from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image"
+import { useTheme } from 'next-themes';
+
+// let logoSrc = '/Sanchez_Logo_white-Icon.svg';
 
 export default function Hello() {
+
   const words = ["Software Engineer", "Frontend Dev", "Backend Builder"];
+
+  // const { theme } = useTheme();
+  // const logoSrc = theme === 'dark' 
+  // ? '/Sanchez_Logo_Black-Full.svg' 
+  // : '/Sanchez_Logo_white-Full.svg';
 
   return (
     <>
     <div className="h-[27rem] flex justify-center items-center px-4 pt-20">
-      <div className="text-3xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+      <div className="text-3xl mx-auto font-normal text-neutral-800 dark:text-neutral-300">
         <div>
         <Image
             src="/headshot.jpeg"
-            width={200}
+            width={200} 
             height={200}
             alt={"logo"}
-            className="mx-auto flex-shrink-0 rounded-full shadow-2xl pb-2"
+            className="mx-auto flex-shrink-0 rounded-full pb-2"
         />
-        Hi, I&apos;m
-        <Image
-            src="/Sanchez_Logo_white-Full.svg"
+        Hi, I&apos;m Sanchez, I&apos;m a 
+        {/* <Image
+            
+            src={logoSrc}
             width={170}
             height={170}
             alt={"logo"}
             className="inline flex-shrink-0 rounded-md shadow-2xl"
-        />. I&apos;m a 
+        />.  */}
+         {/* I&apos;m a  */}
         <br />
         <FlipWords className="mx-auto" words={words} /> 
         </div>

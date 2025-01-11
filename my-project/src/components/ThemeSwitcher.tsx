@@ -4,10 +4,18 @@ import { Sun as SunIcon, Moon as MoonIcon } from 'lucide-react';
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-export default function ThemeSwitch() {
+export default function ThemeSwitch(
+  {  setActive,
+    active,}
+    : {
+      setActive: (item: string) => void;
+      active: string | null;
+    }
+
+) {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const currentTheme = theme === "dark" ? systemTheme : theme;
 
   useEffect(() => setMounted(true), []);
 
