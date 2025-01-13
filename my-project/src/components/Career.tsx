@@ -1,14 +1,19 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { useTheme } from 'next-themes';
 
 export function Career() {
-  // const { theme } = useTheme();
+  const { theme } = useTheme();
 
-  // const logoSrc = theme === 'dark' 
-  //   ? '/galogo.png' 
-  //   : '/galogo2.png';
+  const logoSrc = theme === 'dark' 
+    ? '/galogo.png' 
+    : '/galogo2.png';
+
+    const iclogoSrc = theme === 'dark' 
+    ? '/iclogo.png' 
+    : '/iclogo1.png';
   
   const data = [
     {
@@ -17,7 +22,7 @@ export function Career() {
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
           <Image
-              src="/iclogo.png"
+              src={iclogoSrc}
               alt="hero template"
               width={250}
               height={150}
@@ -86,7 +91,7 @@ export function Career() {
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
           <Image
-              src="/galogo.png"
+              src={logoSrc}
               alt="hero template"
               width={250}
               height={150}

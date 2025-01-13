@@ -4,6 +4,7 @@ import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { Career } from "@/components/Career"
 import FloatingButtonExample from "@/components/FloatingAction"
 import { SayHi } from "@/components/SayHi";
+import { Separator } from "@/components/ui/separator"
 
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
   <ProjectsGrid />
   <Career />
   <FloatingButtonExample />
-
+  {/* <Separator /> */}
   <SayHi />
   </>;
 }

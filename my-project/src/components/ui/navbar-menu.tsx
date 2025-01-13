@@ -13,6 +13,7 @@ const transition = {
   restDelta: 0.001,
   restSpeed: 0.001,
 };
+
 let logoSrc = '/Sanchez_Logo_white-Icon.svg';
 
 export const MenuLogo = ({
