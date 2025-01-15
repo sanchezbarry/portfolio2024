@@ -1,17 +1,24 @@
 'use client'
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { useTheme } from 'next-themes';
 
 export function Career() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const logoSrc = theme === 'dark' 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const logoSrc = (theme === 'dark' || resolvedTheme === 'dark') 
     ? '/galogo.png' 
     : '/galogo2.png';
 
-    const iclogoSrc = theme === 'dark' 
+  const iclogoSrc = (theme === 'dark' || resolvedTheme === 'dark') 
     ? '/iclogo.png' 
     : '/iclogo1.png';
   

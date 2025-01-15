@@ -5,12 +5,20 @@ import { cn } from "@/utils/cn";
 import { PhoneOutgoing, Github, LinkedinIcon, PlusIcon, ArrowUp } from 'lucide-react';
 import Link from "next/link";
 import Button from "next";
+import React, { useState, useEffect } from "react";
 import { useTheme } from 'next-themes';
 
 export default function FloatingButtonExample() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const iconColor = theme === 'dark' ? 'black' : 'white';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const iconColor = (theme === 'dark' || resolvedTheme === 'dark') ? 'black' : 'white';
 
   const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
 

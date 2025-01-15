@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,10 +25,19 @@ export const MenuLogo = ({
   active: string | null;
   item: string;
 })=> {
-  const { theme } = useTheme();
-  logoSrc = theme === 'dark' 
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const logoSrc = (theme === 'dark' || resolvedTheme === 'dark') 
     ? '/Sanchez_Logo_white-Icon.svg' 
     : '/Sanchez_Logo_Black-Icon.svg';
+
   return (
   <div onMouseEnter={() => setActive(item)} className="relative ">
   <Link href={"/"} className="flex space-x-2">
