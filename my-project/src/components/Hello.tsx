@@ -105,7 +105,7 @@ export default function Hello() {
       </div>
       <div className="max-w-4xl text-md mx-auto font-normal text-neutral-600 dark:text-neutral-400 justify-center items-center px-4">
         <p>
-          A marketer turned software engineer, after discovering my love for coding after dabbling with a few websites. I&apos;m excited to use my experience as a marketer to build apps that are intuitive and feel like second nature to use.
+          A marketer turned software engineer, after discovering my love for coding after dabbling with a few websites. I&apos;m a frontend developer with InvestCloud and in my free time, I help small business build simple, beautiful websites. Need one? Click <a href="#anchor_form"><u>here.</u></a>
           <br />
           <br />
           Here some things I&apos;ve created, and the technologies I&apos;m familiar with.

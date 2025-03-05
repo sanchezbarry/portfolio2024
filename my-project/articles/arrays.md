@@ -1,6 +1,6 @@
 ---
 title: "static arrays"
-category: "dev notes"
+category: "data structures"
 date: "13-01-2025"
 ---
 
