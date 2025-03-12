@@ -24,7 +24,7 @@ However, instead of just increasing by one extra element, the array will `double
 
 The two most common operations are **reading** and **writing** the data.
 
-## Why did the array double in size?
+## Why does the array double in size?
 
 First, allocating a new array is a big O(n), also including pushing all the values from the older array to the new one. 
 
