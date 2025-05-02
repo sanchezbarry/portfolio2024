@@ -1,5 +1,67 @@
+// "use client";
+// import React from "react";
+// import {
+//   Modal,
+//   ModalBody,
+//   ModalContent,
+//   ModalFooter,
+//   ModalTrigger,
+// } from "./ui/animated-modal";
+
+// import { TestimonialsGrid } from "./TestimonialsGrid";
+// import { fetchTestimonials } from "@/components/TestimonialsGrid.server";
+// import TestimonialsPage from "@/components/Testimonials";
+
+// export async function getServerSideProps() {
+//   const items = await fetchTestimonials();
+
+//   return {
+//     props: {
+//       items: items.length > 0 ? items : [], // Ensure items is always an array
+//     },
+//   };
+// }
+
+
+// export function TestimonialsPopUp({ items }: { items: { title: string; description: string; header: string }[] }) {
+
+//   // export function TestimonialsPopUp({ children }: { children: React.ReactNode }) {
+//   return (
+//     <div className="flex items-center justify-center">
+//       <Modal>
+
+//         <ModalTrigger>
+//           <span className="text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400">
+//             See All
+//           </span>
+//         </ModalTrigger>
+
+//         <ModalBody>
+//           <ModalContent>
+//             <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8 h-full overflow-y-auto overflow-x-hidden">
+//               All testimonials
+//             </h4>
+//             <div className="flex justify-center items-center">
+//             <TestimonialsPage items={items} />
+//             </div>
+//           </ModalContent>
+//           <ModalFooter className="gap-4">
+//             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
+//               Cancel
+//             </button>
+//             <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+//               Book Now
+//             </button>
+//           </ModalFooter>
+//         </ModalBody>
+//       </Modal>
+//     </div>
+//   );
+// }
+
 "use client";
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalBody,
@@ -7,37 +69,44 @@ import {
   ModalFooter,
   ModalTrigger,
 } from "./ui/animated-modal";
-
 import { TestimonialsGrid } from "./TestimonialsGrid";
-
+import { fetchTestimonials } from "@/components/TestimonialsGrid.server";
 
 export function TestimonialsPopUp() {
-  // export function TestimonialsPopUp({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<
+    { title: string; description: string; header: string }[]
+  >([]);
+
+  // Fetch testimonials dynamically
+  useEffect(() => {
+    async function loadTestimonials() {
+      const fetchedItems = await fetchTestimonials();
+      setItems(fetchedItems);
+    }
+    loadTestimonials();
+  }, []);
+
   return (
     <div className="flex items-center justify-center">
       <Modal>
-
         <ModalTrigger>
-          <span className="text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400">
+          <button className="text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400">
             See All
-          </span>
+          </button>
         </ModalTrigger>
 
         <ModalBody>
           <ModalContent>
-            <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8 h-full overflow-y-auto overflow-x-hidden">
-              All testimonials
+            <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
+              All Testimonials
             </h4>
             <div className="flex justify-center items-center">
-              <TestimonialsGrid />
+              <TestimonialsGrid items={items} />
             </div>
           </ModalContent>
           <ModalFooter className="gap-4">
             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
-              Cancel
-            </button>
-            <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-              Book Now
+              Close
             </button>
           </ModalFooter>
         </ModalBody>
@@ -45,6 +114,15 @@ export function TestimonialsPopUp() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
 
 const PlaneIcon = ({ className }: { className?: string }) => {
   return (

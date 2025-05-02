@@ -142,16 +142,7 @@ import React, { useEffect, useState } from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { fetchTestimonials } from "./TestimonialsGrid.server";
 
-export function TestimonialsGrid() {
-  const [items, setItems] = useState<
-    { title: string; description: string; header: string }[]
-  >([]);
-
-  useEffect(() => {
-    // Fetch the data on the client side
-    fetchTestimonials().then((data) => setItems(data));
-  }, []);
-
+export function TestimonialsGrid({ items = [] }: { items?: { title: string; description: string; header: string }[] }) {
   return (
     <BentoGrid className="max-w-4xl mx-auto">
       {items.length > 0 ? (
@@ -162,8 +153,8 @@ export function TestimonialsGrid() {
             description={item.description}
             header={
               <img
-                src={item.header} // Use the blob's download URL as the image source
-                alt={item.title} // Use the pathname as the alt text
+                src={item.header}
+                alt={item.title}
                 className="w-full h-full object-cover rounded-xl"
               />
             }
@@ -171,7 +162,8 @@ export function TestimonialsGrid() {
           />
         ))
       ) : (
-        // Render skeletons while loading
+        // Commenting out the skeleton rendering
+        /*
         Array.from({ length: 6 }).map((_, i) => (
           <BentoGridItem
             key={i}
@@ -180,10 +172,13 @@ export function TestimonialsGrid() {
             header={<Skeleton />}
           />
         ))
+        */
+        null // Render nothing if no items are available
       )}
     </BentoGrid>
   );
 }
+
 
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>

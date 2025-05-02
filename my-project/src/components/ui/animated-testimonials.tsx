@@ -172,7 +172,8 @@ export const AnimatedTestimonials = ({
             </button>
 
             <button className="group/button h-10 flex align-middle items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800">
-              <TestimonialsPopUp />
+            <TestimonialsPopUp />
+            
             </button>
 
             
