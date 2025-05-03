@@ -101,7 +101,8 @@ export function TestimonialsPopUp() {
               All Testimonials
             </h4>
             <div className="flex justify-center items-center">
-              <TestimonialsGrid items={items} />
+              {/* <TestimonialsGrid items={items} /> */}
+              <TestimonialsGrid/>
             </div>
           </ModalContent>
           <ModalFooter className="gap-4">
