@@ -140,7 +140,7 @@ import { cn } from "@/lib/utils";
 
 import React, { useEffect, useState } from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { fetchTestimonials } from "./TestimonialsGrid.server";
+// import { fetchTestimonials } from "./TestimonialsGrid.server";
 
 // export function TestimonialsGrid({ items = [] }: { items?: { title: string; description: string; header: string }[] }) {
 //   return (

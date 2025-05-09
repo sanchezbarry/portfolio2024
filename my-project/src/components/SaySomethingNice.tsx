@@ -213,11 +213,11 @@ export function SaySomethingNice() {
         </button>
       </form>
 
-      {blob && (
+      {/* {blob && (
         <div>
           Blob URL: <a href={blob.url}>{blob.url}</a>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

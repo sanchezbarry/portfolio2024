@@ -70,7 +70,7 @@ import {
   ModalTrigger,
 } from "./ui/animated-modal";
 import { TestimonialsGrid } from "./TestimonialsGrid";
-import { fetchTestimonials } from "@/components/TestimonialsGrid.server";
+// import { fetchTestimonials } from "@/components/TestimonialsGrid.server";
 
 export function TestimonialsPopUp() {
   const [items, setItems] = useState<
@@ -78,13 +78,13 @@ export function TestimonialsPopUp() {
   >([]);
 
   // Fetch testimonials dynamically
-  useEffect(() => {
-    async function loadTestimonials() {
-      const fetchedItems = await fetchTestimonials();
-      setItems(fetchedItems);
-    }
-    loadTestimonials();
-  }, []);
+  // useEffect(() => {
+  //   async function loadTestimonials() {
+  //     const fetchedItems = await fetchTestimonials();
+  //     setItems(fetchedItems);
+  //   }
+  //   loadTestimonials();
+  // }, []);
 
   return (
     <div className="flex items-center justify-center">
@@ -105,11 +105,11 @@ export function TestimonialsPopUp() {
               <TestimonialsGrid/>
             </div>
           </ModalContent>
-          <ModalFooter className="gap-4">
+          {/* <ModalFooter className="gap-4">
             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
               Close
             </button>
-          </ModalFooter>
+          </ModalFooter> */}
         </ModalBody>
       </Modal>
     </div>
