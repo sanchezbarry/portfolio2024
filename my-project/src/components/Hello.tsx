@@ -60,6 +60,7 @@ import React, { useState, useEffect } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
+import {InfoPopover} from "@/components/ui/info-popover";
 
 export default function Hello() {
   const { theme, resolvedTheme } = useTheme();
@@ -103,13 +104,16 @@ export default function Hello() {
           </div>
         </div>
       </div>
-      <div className="max-w-4xl text-md mx-auto font-normal text-neutral-600 dark:text-neutral-400 justify-center items-center px-4">
+      <div className="flex justify-space gap-1 items-start max-w-4xl text-md mx-auto font-normal text-neutral-600 dark:text-neutral-400 justify-center px-4">
+        <InfoPopover title="Info" description="Throughout my site I use this icon - to explain the technologies and thought that goes behind this site."/>
         <p>
           A marketer turned software engineer, after discovering my love for coding after dabbling with a few websites. I&apos;m a frontend developer with InvestCloud and in my free time, I help small business build simple, beautiful websites. Need one? Click <a href="#anchor_form"><u>here.</u></a>
           <br />
           <br />
           Here some things I&apos;ve created, and the technologies I&apos;m familiar with.
         </p>
+
+        
       </div>
     </>
   );

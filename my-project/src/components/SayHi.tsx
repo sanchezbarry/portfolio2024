@@ -1,6 +1,7 @@
 "use client";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
+import { InfoPopover } from "../components/ui/info-popover";
 import { cn } from "@/utils/cn";
 import React, { useRef } from 'react';
 import emailjs from 'emailjs-com';
@@ -31,9 +32,15 @@ export function SayHi() {
 
   return (
     <div id="anchor_form" className="md:mt-10 mt-28 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+      <div className="flex justify-between">
+      
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Let&apos;s work together.
       </h2> 
+
+      <InfoPopover title="EmailJS" description="This form uses EmailJS - a free easy to use service"/>
+      </div>
+
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Contact me in anyway - email, WhatsApp, or a good old fashioned form like the one below.
       </p>
