@@ -203,7 +203,7 @@ export function Career() {
     },
   ];
   return (
-    <div className="w-full">
+    <div id="career" className="w-full">
       <Timeline data={data} />
     </div>
   );

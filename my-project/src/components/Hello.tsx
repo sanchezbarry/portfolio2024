@@ -61,6 +61,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
 import {InfoPopover} from "@/components/ui/info-popover";
+import { HomeNav } from "./HomeNav";
 
 export default function Hello() {
   const { theme, resolvedTheme } = useTheme();
@@ -115,6 +116,10 @@ export default function Hello() {
 
         
       </div>
+      <div className="max-w-4xl mx-auto px-4 mt-8 flex justify-center">
+  <HomeNav />
+</div>
+     
     </>
   );
 }
