@@ -328,7 +328,7 @@ const FPL = () => {
             />
             <p className="pt-5 text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
-              I wanted to create a website to give ma breakdown of my fantasy premier league.
+              I wanted to create a website to give a breakdown of my fantasy premier league.
               </span>{" "}
               The main technology behind this project is making API calls to the Fantasy Premier League API, and displaying the data in a user-friendly way.
               Players can enter which gameweek they want to view, and the website will display the players in their team, their points, and what transfers their opponents have made.

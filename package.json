@@ -2,6 +2,24 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.30",
+    "node-sass": "^9.0.0",
     "tailwind-merge": "^2.5.2"
-  }
+  },
+  "name": "portfolio2024",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanchezbarry/portfolio2024.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanchezbarry/portfolio2024/issues"
+  },
+  "homepage": "https://github.com/sanchezbarry/portfolio2024#readme",
+  "description": ""
 }

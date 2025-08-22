@@ -54,7 +54,7 @@ const Navbar = ({ className }: { className?: string }) => {
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="https://github.com/sanchezbarry" rel="noopener noreferrer" target="_blank">GitHub</HoveredLink>
               <HoveredLink href="https://www.linkedin.com/in/sanchez-barry/" rel="noopener noreferrer" target="_blank">LinkedIn</HoveredLink>
-              <HoveredLink href="/resume.pdf" rel="noopener noreferrer" target="_blank">Resume</HoveredLink>
+              <HoveredLink href="/resume">Resume</HoveredLink>
               <HoveredLink href="/me">Other Stuff</HoveredLink>
             </div>
           </MenuItem>
