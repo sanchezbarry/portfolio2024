@@ -37,24 +37,24 @@ export default function ResumeWeb() {
           <CardTitle>Contact</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-1">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* <button className="px-12 py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
   WhatsApp
 </button> */}
        <Link className="pr-3 pt-3" href="https://www.linkedin.com/in/sanchez-barry/" rel="noopener noreferrer" target="_blank">
-            <button className="px-12 py-4 rounded-full bg-[#1e40d7] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#2030bd] transition-colors duration-200">
+            <button className="min-w-[140px] px-12 py-4 rounded-full bg-[#1e40d7] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#2030bd] transition-colors duration-200">
   LinkedIn
 </button>
 </Link>
 
 <Link className="pr-3 pt-3" href="https://github.com/sanchezbarry" rel="noopener noreferrer" target="_blank">
-            <button className="px-12 py-4 rounded-full bg-[#535353] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#636363] transition-colors duration-200">
+            <button className=" min-w-[140px] px-12 py-4 rounded-full bg-[#535353] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#636363] transition-colors duration-200">
   GitHub
 </button>
 </Link >
 
 <Link className="pr-3 pt-3" href="mailto:sanchezbarry@gmail.com" rel="noopener noreferrer" target="_blank">
-            <button className="px-12 py-4 rounded-full bg-[#242424] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#464646] transition-colors duration-200">
+            <button className="min-w-[140px] px-12 py-4 rounded-full bg-[#242424] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#464646] transition-colors duration-200">
   Email
 </button>
 </Link>
@@ -93,17 +93,18 @@ export default function ResumeWeb() {
                   </ul>
                 </TableCell>
               </TableRow>
-              {/* <TableRow>
-                <TableCell>Frontend Developer</TableCell>
-                <TableCell>XYZ Ltd</TableCell>
-                <TableCell>2020 &ndash; 2022</TableCell>
+              <TableRow>
+                <TableCell>Senior Marketing Executive</TableCell>
+                <TableCell>Oribel Pte Ltd</TableCell>
+                <TableCell>Feb 2021 &ndash; Jun 2023</TableCell>
                 <TableCell>
                   <ul className="list-disc ml-4">
-                    <li>Built interactive dashboards with React and D3.js.</li>
-                    <li>Collaborated with designers to deliver pixel-perfect UIs.</li>
+                    <li>Developed and executed overall marketing strategy</li>
+                    <li>Planned and executed new product and new market launches.</li>
+                    <li>Account management, marketing support and sales of 17 international distributors and 9 local retailers.</li>
                   </ul>
                 </TableCell>
-              </TableRow> */}
+              </TableRow>
             </TableBody>
           </Table>
         </CardContent>

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from "next-themes"
 import { Providers } from "./provider";
+import FloatingButtonExample from "@/components/FloatingAction"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${cormorantGaramond.variable} ${poppins.variable} ${inter.variable}`}>
         <Providers>
           <Navbar />
+            <FloatingButtonExample />
           {children}
         </Providers>
       </body>
