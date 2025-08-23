@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import Link from "next/link";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // Add this import
+
 
 
 export default function ResumeWeb() {
@@ -10,15 +12,21 @@ export default function ResumeWeb() {
     <div className="max-w-3xl mt-20 mx-auto py-12 px-4">
       {/* Header */}
       <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold">Sanchez Barry</CardTitle>
-          <div className="mt-2 text-neutral-600 dark:text-neutral-400">
-            Software Engineer
-          </div>
-                    <div className="mt-2 text-neutral-600 dark:text-neutral-400">
-            Singaporean citizen, 33, currently working as Frontend Developer with InvestCloud with a Masters degree from NTU
-          </div>
-        </CardHeader>
+  <CardHeader>
+    <div className="flex items-center gap-4">
+      <Avatar>
+        <AvatarImage src="/headshot.jpeg" alt="Barry Sanchez" />
+        <AvatarFallback>BS</AvatarFallback>
+      </Avatar>
+      <CardTitle className="text-3xl font-bold">Sanchez Barry</CardTitle>
+    </div>
+    <div className="mt-2 text-neutral-600 dark:text-neutral-400">
+      Software Engineer
+    </div>
+    <div className="mt-2 text-neutral-600 dark:text-neutral-400">
+      Singaporean citizen, 33, currently working as Frontend Developer with InvestCloud with a Masters degree from NTU.
+    </div>
+  </CardHeader>
         <CardContent>
           {/* <div className="flex flex-wrap gap-2 mt-2">
             <Badge>Frontend</Badge>
