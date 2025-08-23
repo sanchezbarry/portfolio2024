@@ -38,9 +38,29 @@ export default function ResumeWeb() {
         </CardHeader>
         <CardContent>
           <div className="space-y-1">
-            <div>Email: <a href="sanchezbarry@gmail.com" className="underline">sanchezbarry@gmail.com</a></div>
+            {/* <button className="px-12 py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
+  WhatsApp
+</button> */}
+       <Link className="pr-3 pt-3" href="https://www.linkedin.com/in/sanchez-barry/" rel="noopener noreferrer" target="_blank">
+            <button className="px-12 py-4 rounded-full bg-[#1e40d7] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#2030bd] transition-colors duration-200">
+  LinkedIn
+</button>
+</Link>
+
+<Link className="pr-3 pt-3" href="https://github.com/sanchezbarry" rel="noopener noreferrer" target="_blank">
+            <button className="px-12 py-4 rounded-full bg-[#535353] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#636363] transition-colors duration-200">
+  GitHub
+</button>
+</Link >
+
+<Link className="pr-3 pt-3" href="mailto:sanchezbarry@gmail.com" rel="noopener noreferrer" target="_blank">
+            <button className="px-12 py-4 rounded-full bg-[#242424] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#464646] transition-colors duration-200">
+  Email
+</button>
+</Link>
+            {/* <div>Email: <a href="sanchezbarry@gmail.com" className="underline">sanchezbarry@gmail.com</a></div>
             <div>LinkedIn: <a href="https://www.linkedin.com/in/sanchez-barry/" className="underline">https://www.linkedin.com/in/sanchez-barry/</a></div>
-            <div>GitHub: <a href="https://github.com/sanchezbarry" className="underline">https://github.com/sanchezbarry</a></div>
+            <div>GitHub: <a href="https://github.com/sanchezbarry" className="underline">https://github.com/sanchezbarry</a></div> */}
           </div>
         </CardContent>
       </Card>
@@ -48,7 +68,7 @@ export default function ResumeWeb() {
         <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
         <CardHeader>
           <CardTitle>Experience</CardTitle>
-        </CardHeader>c
+        </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
