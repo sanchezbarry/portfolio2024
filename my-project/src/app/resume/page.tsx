@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import Link from "next/link";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // Add this import
+import { IconDownload } from "@tabler/icons-react";
 
 
 
@@ -16,9 +17,12 @@ export default function ResumeWeb() {
     <div className="flex items-center gap-4">
       <Avatar>
         <AvatarImage src="/headshot.jpeg" alt="Barry Sanchez" />
-        <AvatarFallback>BS</AvatarFallback>
+        <AvatarFallback>SB</AvatarFallback>
       </Avatar>
       <CardTitle className="text-3xl font-bold">Sanchez Barry</CardTitle>
+          <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="ml-4 flex-row">
+      <IconDownload className="w-6 h-6 text-[#616467] hover:text-[#2030bd] transition-colors duration-200" />
+    </Link>
     </div>
     <div className="mt-2 text-neutral-600 dark:text-neutral-400">
       Software Engineer
@@ -66,6 +70,12 @@ export default function ResumeWeb() {
   Email
 </button>
 </Link>
+
+{/* <Link className="pr-3 pt-3" href="mailto:sanchezbarry@gmail.com" rel="noopener noreferrer" target="_blank">
+            <button className="min-w-[140px] px-12 py-4 rounded-full bg-[#187542] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#3abd4f] transition-colors duration-200">
+  WhatsApp
+</button>
+</Link> */}
             {/* <div>Email: <a href="sanchezbarry@gmail.com" className="underline">sanchezbarry@gmail.com</a></div>
             <div>LinkedIn: <a href="https://www.linkedin.com/in/sanchez-barry/" className="underline">https://www.linkedin.com/in/sanchez-barry/</a></div>
             <div>GitHub: <a href="https://github.com/sanchezbarry" className="underline">https://github.com/sanchezbarry</a></div> */}
@@ -94,9 +104,9 @@ export default function ResumeWeb() {
                 <TableCell>2023 &ndash; Present</TableCell>
                 <TableCell>
                   <ul className="list-disc ml-4">
-                    <li>Developed scalable web applications</li>
+                    <li>Developed scalable web applications for clients such as SingLife and CitiBank.</li>
                     <li>Worked in Agile environments, managing tasks with JIRA to ensure timely project delivery.</li>
-                    <li>Modernized digital platforms for financial institutions, ensuring compliance and exceptional user experience</li>
+                    <li>Modernized digital platforms for financial institutions, ensuring compliance and exceptional user experience.</li>
                     <li>Collaborated with Solution Architects, Backend and Dev-Ops teams to come up with solutions and align deliverables within project timelines.</li>
                   </ul>
                 </TableCell>
@@ -108,8 +118,22 @@ export default function ResumeWeb() {
                 <TableCell>
                   <ul className="list-disc ml-4">
                     <li>Developed and executed overall marketing strategy</li>
-                    <li>Planned and executed new product and new market launches.</li>
+                    <li>Planned and executed new product and new market launches.</li>         
+                    <li>Launched the dedicated Singapore site and managed sales & marketing for SG, AU and CAN eCommerce websites, resulting in USD$108,146.</li>
+                    <li>Launched Google Shopping in US, SG, AUS & CAN, overall resulting in an additional USD$28,913.26 in sales from a new digital channel.</li>
                     <li>Account management, marketing support and sales of 17 international distributors and 9 local retailers.</li>
+                  </ul>
+                </TableCell>
+              </TableRow>
+                            <TableRow>
+                <TableCell>Marketing Lead</TableCell>
+                <TableCell>plano</TableCell>
+                <TableCell>Aug 2018 &ndash; Dec 2020</TableCell>
+                <TableCell>
+                  <ul className="list-disc ml-4">
+                    <li>Created and developed the marketing & communications strategy and worked closely with the executive team.</li>
+                    <li>Leading the design, development, and execution of all marketing and communication campaigns for plano.</li>
+                    <li>Over 1 million app downloads, 415 Media pickups, 20,000 average monthly unique page views.</li>
                   </ul>
                 </TableCell>
               </TableRow>
@@ -170,6 +194,8 @@ export default function ResumeWeb() {
             <Badge>SQL</Badge>
             <Badge>HTML/CSS</Badge>
             <Badge>CI/CD</Badge>
+            <Badge>Flutter/Dart</Badge>
+            <Badge>Postgres/MongoDB</Badge>
           </div>
         </CardContent>
       </Card>

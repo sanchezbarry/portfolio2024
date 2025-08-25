@@ -50,7 +50,7 @@ const Navbar = ({ className }: { className?: string }) => {
               />
             </div> */}
           {/* </MenuItem> */}
-          <MenuItem setActive={setActive} active={active} item="Links">
+          <MenuItem setActive={setActive} active={active} item="More">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="https://github.com/sanchezbarry" rel="noopener noreferrer" target="_blank">GitHub</HoveredLink>
               <HoveredLink href="https://www.linkedin.com/in/sanchez-barry/" rel="noopener noreferrer" target="_blank">LinkedIn</HoveredLink>
