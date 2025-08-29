@@ -5,6 +5,7 @@ import { Career } from "@/components/Career"
 
 import { SayHi } from "@/components/SayHi";
 import { Separator } from "@/components/ui/separator"
+import { PaidProjects } from "@/components/PaidProjects";
 
 
 export default function Home() {
@@ -12,9 +13,8 @@ export default function Home() {
   
   <Hello />
   <ProjectsGrid />
+  <PaidProjects />
   <Career />
-
-  {/* <Separator /> */}
   <SayHi />
   </>;
 }

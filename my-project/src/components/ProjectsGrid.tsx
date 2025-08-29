@@ -11,9 +11,12 @@ export function ProjectsGrid() {
 
   return (
     <div id="projects" className="w-full h-full py-10">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold mb-3 text-neutral-800 dark:text-neutral-200 font-sans">
         Featured Projects
       </h2>
+      <p className="max-w-7xl pl-4 mx-auto text-neutral-700  dark:text-neutral-300 text-sm md:text-base">
+          Here are a mix of fun, passion and commercial projects I have worked on.
+        </p>
       <Carousel items={cards} />
     </div>
   );

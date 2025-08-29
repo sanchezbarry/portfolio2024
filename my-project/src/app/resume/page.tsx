@@ -12,7 +12,7 @@ export default function ResumeWeb() {
   return (
     <div className="max-w-3xl mt-20 mx-auto py-12 px-4">
       {/* Header */}
-      <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
+      <Card className="mb-8 bg-[#e7e7e7] dark:bg-[#0a0a0a] border-none shadow-sm">
   <CardHeader>
     <div className="flex items-center gap-4">
       <Avatar>
@@ -44,7 +44,7 @@ export default function ResumeWeb() {
       </Card>
 
       {/* Contact Info */}
-      <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
+      <Card className="mb-8 bg-[#e7e7e7] dark:bg-[#0a0a0a] border-none shadow-sm">
         <CardHeader>
           <CardTitle>Contact</CardTitle>
         </CardHeader>
@@ -83,7 +83,7 @@ export default function ResumeWeb() {
         </CardContent>
       </Card>
 
-        <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
+        <Card className="mb-8 bg-[#e7e7e7] dark:bg-[#0a0a0a] border-none shadow-sm">
         <CardHeader>
           <CardTitle>Experience</CardTitle>
         </CardHeader>
@@ -143,7 +143,7 @@ export default function ResumeWeb() {
       </Card>
 
       {/* Education Table */}
-      <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
+      <Card className="mb-8 bg-[#e7e7e7] dark:bg-[#0a0a0a] border-none shadow-sm">
         <CardHeader>
           <CardTitle>Education</CardTitle>
         </CardHeader>
@@ -180,7 +180,7 @@ export default function ResumeWeb() {
       </Card>
 
       {/* Skills */}
-      <Card className="mb-8 bg-[#0a0a0a] border-none shadow-sm">
+      <Card className="mb-8 bg-[#e7e7e7] dark:bg-[#0a0a0a] border-none shadow-sm">
         <CardHeader>
           <CardTitle>Skills</CardTitle>
         </CardHeader>
