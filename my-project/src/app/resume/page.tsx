@@ -4,7 +4,8 @@ import { Separator } from "@/components/ui/separator";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import Link from "next/link";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // Add this import
-import { IconDownload } from "@tabler/icons-react";
+import { IconFileTypePdf } from "@tabler/icons-react";
+import { IconFileTypeDoc } from "@tabler/icons-react";
 
 
 
@@ -21,7 +22,11 @@ export default function ResumeWeb() {
       </Avatar>
       <CardTitle className="text-3xl font-bold">Sanchez Barry</CardTitle>
           <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="ml-4 flex-row">
-      <IconDownload className="w-6 h-6 text-[#616467] hover:text-[#2030bd] transition-colors duration-200" />
+      <IconFileTypePdf className="w-6 h-6 text-[#616467] hover:text-[#2030bd] transition-colors duration-200" />
+    </Link>
+
+              <Link href="/Sanchez_Barry_Resume.docx" target="_blank" rel="noopener noreferrer" className="ml-4 flex-row">
+      <IconFileTypeDoc className="w-6 h-6 text-[#616467] hover:text-[#2030bd] transition-colors duration-200" />
     </Link>
     </div>
     <div className="mt-2 text-neutral-600 dark:text-neutral-400">
