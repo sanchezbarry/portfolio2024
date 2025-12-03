@@ -4,28 +4,40 @@ export async function POST(request: Request) {
   try {
     const { token } = await request.json();
 
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    if (!token) {
+      return NextResponse.json({ success: false, message: "No token provided" }, { status: 400 });
+    }
+
+    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secret) {
+      return NextResponse.json({ success: false, message: "Missing RECAPTCHA_SECRET_KEY on server" }, { status: 500 });
+    }
+
+    const params = new URLSearchParams();
+    params.append("secret", secret);
+    params.append("response", token);
+
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+      body: params.toString(),
     });
 
-    const data = await response.json();
+    const data = await res.json();
 
+    console.log("Google reCAPTCHA response:", data);
+
+    // Check if verification was successful
     if (data.success) {
-      // Additional check for score (reCAPTCHA v3)
-      if (data.score >= 0.5) {
-        return NextResponse.json({ success: true });
-      } else {
-        return NextResponse.json({ success: false, message: "reCAPTCHA score too low" });
-      }
+      return NextResponse.json({ success: true });
     } else {
-      return NextResponse.json({ success: false, message: "reCAPTCHA verification failed" });
+      console.error("reCAPTCHA failed:", data["error-codes"]);
+      return NextResponse.json({ success: false, message: "reCAPTCHA verification failed" }, { status: 400 });
     }
-  } catch (error) {
-    console.error("Error verifying reCAPTCHA:", error);
+  } catch (err) {
+    console.error("reCAPTCHA verification error:", err);
     return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
   }
 }
