@@ -3,26 +3,74 @@ import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { InfoPopover } from "../components/ui/info-popover";
 import { cn } from "@/utils/cn";
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
+import ReCAPTCHA from 'react-google-recaptcha'; // Import ReCAPTCHA component
+
 
 export function SayHi() {
   const form = useRef<HTMLFormElement>(null);
+ const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (form.current) {
-      emailjs.sendForm('service_mj7djes', 'template_cr8vpyo', form.current, 'Uhr95mJdb1211miPp')
-        .then((result) => {
-          console.log(result.text);
-          alert('Message sent successfully!');
-        }, (error) => {
-          console.log(error.text);
-          alert('Failed to send the message, please try again.');
-        });
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Send the token to your backend for verification
+      const response = await fetch("/api/verify-recaptcha", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: recaptchaToken,
+          // Add your form data here
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Form submitted successfully!");
+        // Handle successful submission
+      } else {
+        alert("reCAPTCHA verification failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+  
+
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   if (form.current) {
+  //     emailjs.sendForm('service_mj7djes', 'template_cr8vpyo', form.current, 'Uhr95mJdb1211miPp')
+  //       .then((result) => {
+  //         console.log(result.text);
+  //         alert('Message sent successfully!');
+  //       }, (error) => {
+  //         console.log(error.text);
+  //         alert('Failed to send the message, please try again.');
+  //       });
+  //   }
+  // };
 
 
   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,10 +117,19 @@ export function SayHi() {
             className="flex h-20 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)] group-hover/input:shadow-none transition duration-400"
           />
         </LabelInputContainer>
+
+                {/* reCAPTCHA Component */}
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            onChange={handleRecaptchaChange}
+          />
+        </div>
+
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>
