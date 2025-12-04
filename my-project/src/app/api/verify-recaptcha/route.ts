@@ -13,6 +13,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Missing RECAPTCHA_SECRET_KEY on server" }, { status: 500 });
     }
 
+    console.log("Verifying token with secret:", secret?.substring(0, 10) + "...");
+
     const params = new URLSearchParams();
     params.append("secret", secret);
     params.append("response", token);
@@ -27,14 +29,17 @@ export async function POST(request: Request) {
 
     const data = await res.json();
 
-    console.log("Google reCAPTCHA response:", data);
+    console.log("Google reCAPTCHA full response:", JSON.stringify(data, null, 2));
 
-    // Check if verification was successful
     if (data.success) {
       return NextResponse.json({ success: true });
     } else {
-      console.error("reCAPTCHA failed:", data["error-codes"]);
-      return NextResponse.json({ success: false, message: "reCAPTCHA verification failed" }, { status: 400 });
+      console.error("reCAPTCHA failed with error codes:", data["error-codes"]);
+      return NextResponse.json({ 
+        success: false, 
+        message: "reCAPTCHA verification failed",
+        errors: data["error-codes"]
+      }, { status: 400 });
     }
   } catch (err) {
     console.error("reCAPTCHA verification error:", err);

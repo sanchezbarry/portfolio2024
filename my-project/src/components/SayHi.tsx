@@ -108,6 +108,8 @@
 //     </div>
 //   );
 // };
+
+
 "use client";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
@@ -123,63 +125,67 @@ export function SayHi() {
   const form = useRef<HTMLFormElement>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    if (!capVal) {
-      alert("Please complete the reCAPTCHA");
-      return;
-    }
+  if (!capVal) {
+    alert("Please complete the reCAPTCHA");
+    return;
+  }
 
-    setIsLoading(true);
+  setIsLoading(true);
 
-    try {
-      // Verify reCAPTCHA token on server
-      const verifyRes = await fetch("/api/verify-recaptcha", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: capVal }),
-      });
+  try {
+    // Step 1: Verify reCAPTCHA token with YOUR API first
+    const verifyRes = await fetch("/api/verify-recaptcha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: capVal }),
+    });
 
-      const verifyJson = await verifyRes.json();
+    const verifyJson = await verifyRes.json();
 
-      if (!verifyJson.success) {
-        console.error("reCAPTCHA verification failed:", verifyJson);
-        alert("reCAPTCHA verification failed. Please try again.");
-        // Reset reCAPTCHA widget to get a fresh token
-        recaptchaRef.current?.reset();
-        setCapVal(null);
-        setIsLoading(false);
-        return;
-      }
+    console.log("reCAPTCHA verification response:", verifyJson);
 
-      // Send email via EmailJS
-      if (form.current) {
-        emailjs.sendForm('service_mj7djes', 'template_cr8vpyo', form.current, 'Uhr95mJdb1211miPp')
-          .then((result) => {
-            console.log(result.text);
-            alert('Message sent successfully!');
-            form.current?.reset();
-            recaptchaRef.current?.reset();
-            setCapVal(null);
-          }, (error) => {
-            console.log(error.text);
-            alert('Failed to send the message, please try again.');
-            // Reset reCAPTCHA on EmailJS error
-            recaptchaRef.current?.reset();
-            setCapVal(null);
-          })
-          .finally(() => setIsLoading(false));
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      alert("An error occurred. Please try again.");
-      // Reset reCAPTCHA on error
+    if (!verifyJson.success) {
+      console.error("reCAPTCHA verification failed:", verifyJson);
+      alert("reCAPTCHA verification failed. Please try again.");
       recaptchaRef.current?.reset();
       setCapVal(null);
       setIsLoading(false);
+      return;
     }
-  };
+
+    // Step 2: Only after verification succeeds, send to EmailJS
+    if (form.current) {
+      emailjs.sendForm(
+        'service_mj7djes', 
+        'template_cr8vpyo', 
+        form.current, 
+        'Uhr95mJdb1211miPp'
+      )
+        .then((result) => {
+          console.log("EmailJS success:", result.text);
+          alert('Message sent successfully!');
+          form.current?.reset();
+          recaptchaRef.current?.reset();
+          setCapVal(null);
+        }, (error) => {
+          console.error("EmailJS error:", error.text);
+          alert('Failed to send the message, please try again.');
+          recaptchaRef.current?.reset();
+          setCapVal(null);
+        })
+        .finally(() => setIsLoading(false));
+    }
+  } catch (err) {
+    console.error("Error:", err);
+    alert("An error occurred. Please try again.");
+    recaptchaRef.current?.reset();
+    setCapVal(null);
+    setIsLoading(false);
+  }
+};
 
   return (
     <div id="anchor_form" className="md:mt-10 mt-28 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
