@@ -210,6 +210,22 @@ export const CloseIcon = () => {
 };
 
 const cards = [
+    {
+    description: "NextJS, TailwindCSS, Supbase, Auth, Keystatic CMS, RSS Feed",
+    title: "Chapel of Christ the King Website",
+    src: "/cck.png",
+    ctaText: "Visit",
+    ctaLink: "https://cck.org.sg/",
+    content: () => {
+      return (
+        <p>
+          Recreated Chapel of Christ the King&apos;s website to provide a modern, user-friendly experience for visitors. The new design features a clean and intuitive layout, making it easy for users to navigate and find information about the church&apos;s services, events, and community activities. <br /> <br />
+          The website is built using Next.js and TailwindCSS, ensuring a responsive design that looks great on all devices. Supabase is used for backend services, including authentication and data management, while Keystatic CMS allows for easy content updates by the church staff. <br /> <br />
+          Additionally, an RSS feed has been implemented to pull the latest sermons from Spotify.
+        </p>
+      );
+    },
+  },
   {
     description: "Wordpress, JS, HTML, CSS",
     title: "Spartans Advisors Website",

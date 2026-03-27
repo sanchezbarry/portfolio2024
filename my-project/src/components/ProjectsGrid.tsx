@@ -195,7 +195,7 @@ const ChurchContent = () => {
           >
             <Image
               src="/church.gif"
-              alt="Software Jobs Website Preview"
+              alt="Church Sermons Website 1-pager"
               height="500" 
               width="500"
               className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
@@ -333,7 +333,7 @@ const FPL = () => {
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
               I wanted to create a website to give a breakdown of my fantasy premier league.
               </span>{" "}
-              The main technology behind this project is making API calls to the Fantasy Premier League API, and displaying the data in a user-friendly way.
+              The main technology behind this project is making API calls to the Fantasy Premier League API, and displaying the data in a user-friendly way. The website also used AI to generate a summary of the gameweek, and the overall season.
               Players can enter which gameweek they want to view, and the website will display the players in their team, their points, and what transfers their opponents have made.
               This project is still a work in progress, and I plan to add more features in the future, such as an input field so anyone can enter their league id and view their league data.
             </p>
@@ -406,7 +406,7 @@ const data = [
   {
     category: "A simple one-pager for sermons to be hosted and played.",
     tech: "JavaScript | HTML | CSS (Bootstrap) | API Calls",
-    title: "CCK Sermons",
+    title: "CCK Sermons 1.0",
     src: "/church.jpg",
     content: <ChurchContent />,
   },

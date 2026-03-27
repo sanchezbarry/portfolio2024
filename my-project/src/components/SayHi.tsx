@@ -228,7 +228,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           />
         </LabelInputContainer>
 
-        <div className="mb-4">
+        <div className="mb-4 w-full">
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
