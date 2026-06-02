@@ -128,7 +128,7 @@ export const AnimatedTestimonials = ({
             <p className="text-sm text-gray-500 dark:text-neutral-500">
               {testimonials[active].designation}
             </p>
-            <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
+            <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300 pb-4">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -155,7 +155,7 @@ export const AnimatedTestimonials = ({
             </motion.p>
           </motion.div>
           
-
+          
 
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
@@ -171,10 +171,9 @@ export const AnimatedTestimonials = ({
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
             </button>
 
-            <button className="group/button h-10 flex align-middle items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800">
-            <TestimonialsPopUp />
-            
-            </button>
+            <div className="group/button h-10 flex align-middle items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800">
+              <TestimonialsPopUp />
+            </div>
 
             
           </div>

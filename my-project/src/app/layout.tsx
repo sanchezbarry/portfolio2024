@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import type { AppProps } from 'next/app'
-import { ThemeProvider } from "next-themes"
 import { Providers } from "./provider";
 import FloatingButtonExample from "@/components/FloatingAction"
 
@@ -24,8 +22,34 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Sanchez Barry | Software Engineer",
-  description: "A marketer turned software engineer, after discovering my love for coding after dabbling with a few websites. I'm excited to use my experience as a marketer to build apps that are intuitive and feel like second nature to use.",
+  title: {
+    default: "Sanchez | Frontend Developer",
+    template: "%s | Sanchez",
+  },
+  description: "Frontend developer at InvestCloud based in Singapore, with a background in marketing. I build things that are easy to use, not just easy to build.",
+  metadataBase: new URL("https://www.sanchezbarry.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_SG",
+    url: "https://www.sanchezbarry.com",
+    siteName: "Sanchez Barry",
+    title: "Sanchez Barry | Frontend Developer",
+    description: "Frontend developer at InvestCloud based in Singapore, with a background in marketing. I build things that are easy to use, not just easy to build.",
+    images: [
+      {
+        url: "/headshot.jpeg",
+        width: 800,
+        height: 800,
+        alt: "Barry Sanchez",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Barry Sanchez | Frontend Developer",
+    description: "Frontend developer at InvestCloud based in Singapore.",
+    images: ["/headshot.jpeg"],
+  },
 };
 
 export default function RootLayout({

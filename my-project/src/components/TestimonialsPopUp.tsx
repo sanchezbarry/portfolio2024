@@ -89,11 +89,11 @@ export function TestimonialsPopUp() {
   return (
     <div className="flex items-center justify-center">
       <Modal>
-        <ModalTrigger>
-          <button className="text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400">
+        {/* <ModalTrigger>
+          <span className="text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400">
             See All
-          </button>
-        </ModalTrigger>
+          </span>
+        </ModalTrigger> */}
 
         <ModalBody>
           <ModalContent>

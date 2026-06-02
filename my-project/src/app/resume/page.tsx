@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description: "Barry Sanchez's resume — frontend developer at InvestCloud with experience in React, Next.js, TypeScript, and Node.js.",
+};
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";

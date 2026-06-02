@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import { getArticleData } from "../../../lib/articles";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const article = await getArticleData(params.slug);
+  return {
+    title: article.title,
+    description: `Dev Notes — ${article.title}`,
+  };
+}
 
 const Article = async ({ params } : { params: { slug: string } }) => {
     const articleData = await getArticleData(params.slug)

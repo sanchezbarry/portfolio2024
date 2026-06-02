@@ -66,7 +66,7 @@ export function PaidProjects() {
                   duration: 0.05,
                 },
               }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white dark:bg-neutral-800 rounded-full h-6 w-6"
               onClick={() => setActive(null)}
             >
               <CloseIcon />
@@ -107,7 +107,7 @@ export function PaidProjects() {
                     layoutId={`button-${active.title}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-gray-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-gray-500 dark:bg-gray-600 text-white"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -165,7 +165,7 @@ export function PaidProjects() {
             </div>
             <motion.button
               layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-gray-500 hover:text-white text-black mt-4 md:mt-0"
+              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 dark:bg-neutral-700 hover:bg-gray-500 dark:hover:bg-neutral-600 hover:text-white text-black dark:text-white mt-4 md:mt-0"
             >
               {card.ctaText}
             </motion.button>
@@ -200,7 +200,7 @@ export const CloseIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="h-4 w-4 text-black dark:text-white"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
@@ -210,122 +210,79 @@ export const CloseIcon = () => {
 };
 
 const cards = [
-    {
-    description: "NextJS, TailwindCSS, Supbase, Auth, Keystatic CMS, RSS Feed",
+  {
+    description: "Next.js, TailwindCSS, Supabase, Auth, Keystatic CMS, RSS Feed",
     title: "Chapel of Christ the King Website",
     src: "/cck.png",
     ctaText: "Visit",
     ctaLink: "https://cck.org.sg/",
     content: () => {
       return (
-        <p>
-          Recreated Chapel of Christ the King&apos;s website to provide a modern, user-friendly experience for visitors. The new design features a clean and intuitive layout, making it easy for users to navigate and find information about the church&apos;s services, events, and community activities. <br /> <br />
-          The website is built using Next.js and TailwindCSS, ensuring a responsive design that looks great on all devices. Supabase is used for backend services, including authentication and data management, while Keystatic CMS allows for easy content updates by the church staff. <br /> <br />
-          Additionally, an RSS feed has been implemented to pull the latest sermons from Spotify.
-        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Challenge</p>
+            <p>CCK&apos;s existing site was outdated and difficult for staff to maintain. They needed a modern, approachable design that could be updated without developer involvement.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Solution</p>
+            <p>Rebuilt from the ground up with Next.js and TailwindCSS. Keystatic CMS gives church staff full control over content — no code required. Supabase handles authentication and data, and an RSS feed pulls the latest sermons directly from their Spotify podcast.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">Stack</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">Next.js · TailwindCSS · Supabase · Keystatic CMS · RSS</p>
+          </div>
+        </div>
       );
     },
   },
   {
-    description: "Wordpress, JS, HTML, CSS",
+    description: "WordPress, JS, HTML, CSS",
     title: "Spartans Advisors Website",
     src: "/spartans.png",
     ctaText: "Visit",
     ctaLink: "https://spartansadvisors.com/",
     content: () => {
       return (
-        <p>
-          Spartans Advisors required a professional and modern website to
-          showcase their financial advisory services. The website features a clean, professional design with easy navigation and clear calls to action. <br />{" "}<br />
-          The site is built on WordPress, allowing for easy updates and blog content management. It is fully responsive, ensuring a seamless experience across all devices. <br /> <br />
-          Key features include service pages, a blog section, and a contact form to capture leads.
-        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Challenge</p>
+            <p>Spartans Advisors needed a credible, professional online presence to attract and convert potential clients in the financial advisory space.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Solution</p>
+            <p>Built on WordPress for easy self-managed updates. The design is clean and trust-building, with clear service pages, a blog for thought leadership, and a lead-capture contact form. Fully responsive across all devices.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">Stack</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">WordPress · JavaScript · HTML · CSS</p>
+          </div>
+        </div>
       );
     },
   },
   {
-    description: "NextJs, TailwindCSS, Framer Motion",
+    description: "Next.js, TailwindCSS, Framer Motion",
     title: "DCMO Law Firm Website",
     src: "/fish.png",
     ctaText: "Visit",
     ctaLink: "https://www.dcmolaw.com.sg/",
     content: () => {
       return (
-        <p>
-          DCMO Law Firm needed a sleek, modern website to represent their legal
-          services. The website features a clean, professional design with smooth
-          animations and transitions using Framer Motion. <br /> <br /> Built
-          with Next.js and TailwindCSS, the site is fully responsive and optimized
-          for performance and SEO. <br /> <br /> Key features include service pages, an
-          about us section, and a contact form to capture leads.
-        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Challenge</p>
+            <p>DCMO Law needed a website that conveyed professionalism and expertise while standing out from the template-heavy look of most law firm sites.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Solution</p>
+            <p>A custom Next.js build with polished Framer Motion animations that give the site a premium feel without sacrificing load performance. Fully responsive and SEO-optimised, with structured service pages and a contact form for lead capture.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">Stack</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">Next.js · TailwindCSS · Framer Motion</p>
+          </div>
+        </div>
       );
     },
   },
-
-//   {
-//     description: "Metallica",
-//     title: "For Whom The Bell Tolls",
-//     src: "https://assets.aceternity.com/demos/metallica.jpeg",
-//     ctaText: "Play",
-//     ctaLink: "https://ui.aceternity.com/templates",
-//     content: () => {
-//       return (
-//         <p>
-//           Metallica, an iconic American heavy metal band, is renowned for their
-//           powerful sound and intense performances that resonate deeply with
-//           their audience. Formed in Los Angeles, California, they have become a
-//           cultural icon in the heavy metal music industry. <br /> <br /> Their
-//           songs often reflect themes of aggression, social issues, and personal
-//           struggles, capturing the essence of the heavy metal genre. With a
-//           career spanning over four decades, Metallica has released numerous hit
-//           albums and singles that have garnered them a massive fan following
-//           both in the United States and abroad.
-//         </p>
-//       );
-//     },
-//   },
-//   {
-//     description: "Led Zeppelin",
-//     title: "Stairway To Heaven",
-//     src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
-//     ctaText: "Play",
-//     ctaLink: "https://ui.aceternity.com/templates",
-//     content: () => {
-//       return (
-//         <p>
-//           Led Zeppelin, a legendary British rock band, is renowned for their
-//           innovative sound and profound impact on the music industry. Formed in
-//           London in 1968, they have become a cultural icon in the rock music
-//           world. <br /> <br /> Their songs often reflect a blend of blues, hard
-//           rock, and folk music, capturing the essence of the 1970s rock era.
-//           With a career spanning over a decade, Led Zeppelin has released
-//           numerous hit albums and singles that have garnered them a massive fan
-//           following both in the United Kingdom and abroad.
-//         </p>
-//       );
-//     },
-//   },
-//   {
-//     description: "Mustafa Zahid",
-//     title: "Toh Phir Aao",
-//     src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
-//     ctaText: "Play",
-//     ctaLink: "https://ui.aceternity.com/templates",
-//     content: () => {
-//       return (
-//         <p>
-//           &quot;Aawarapan&quot;, a Bollywood movie starring Emraan Hashmi, is
-//           renowned for its intense storyline and powerful performances. Directed
-//           by Mohit Suri, the film has become a significant work in the Indian
-//           film industry. <br /> <br /> The movie explores themes of love,
-//           redemption, and sacrifice, capturing the essence of human emotions and
-//           relationships. With a gripping narrative and memorable music,
-//           &quot;Aawarapan&quot; has garnered a massive fan following both in
-//           India and abroad, solidifying Emraan Hashmi&apos;s status as a
-//           versatile actor.
-//         </p>
-//       );
-//     },
-//   },
 ];

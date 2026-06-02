@@ -1,8 +1,11 @@
-import Image from "next/image";
-import Hello from "@/components/Hello"
-import ComingSoon from "@/components/ComingSoon"
+import { Metadata } from "next";
 import { getCategorisedArticles } from "../../../lib/articles";
 import ArticleItemList from "@/components/ArticleListItem";
+
+export const metadata: Metadata = {
+  title: "Dev Notes",
+  description: "Scribblings on what I've learnt as a software developer — from arrays to algorithms and data structures.",
+};
 
 export default function Blog() {
   const articles = getCategorisedArticles()
