@@ -10,7 +10,7 @@ export function ProjectsGrid() {
   ));
 
   return (
-    <div id="projects" className="w-full h-full py-10">
+    <div id="projects" className="w-full py-10 dark:bg-neutral-950 overflow-x-hidden">
       <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold mb-3 text-neutral-800 dark:text-neutral-200 font-sans">
         Featured Projects
       </h2>
@@ -32,8 +32,9 @@ const CoffeeContent = () => {
             <Image
               src="/coffee.gif"
               alt="Coffee Website Preview"
-              height="500" 
+              height="500"
               width="500"
+              unoptimized
               className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
             />
             <p className="pt-5 text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
@@ -75,8 +76,9 @@ const AlcoholContent = () => {
             <Image
               src="/tipsy.gif"
               alt="Alcohol Website Preview"
-              height="500" 
+              height="500"
               width="500"
+              unoptimized
               className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
             />
             <p className="pt-5 text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
@@ -118,8 +120,9 @@ const SoftwareContent = () => {
             <Image
               src="/software.gif"
               alt="Software Jobs Website Preview"
-              height="500" 
+              height="500"
               width="500"
+              unoptimized
               className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
             />
             <p className="pt-5 text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">

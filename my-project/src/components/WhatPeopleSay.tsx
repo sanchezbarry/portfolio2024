@@ -41,7 +41,7 @@ export function WhatPeopleSay() {
   ];
 
   return (
-    <div className="my-10">
+    <div className="w-full py-10 dark:bg-neutral-950">
       <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl mb-4 font-bold text-neutral-800 dark:text-neutral-200 font-sans">
         What People Say
       </h2>
