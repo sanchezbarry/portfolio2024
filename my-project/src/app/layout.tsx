@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Providers } from "./provider";
 import FloatingButtonExample from "@/components/FloatingAction"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -64,6 +66,8 @@ export default function RootLayout({
           <Navbar />
             <FloatingButtonExample />
           {children}
+          <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

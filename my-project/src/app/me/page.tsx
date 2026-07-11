@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SaySomethingNice } from "@/components/SaySomethingNice";
+import KofiButton from "@/components/KofiButton";
 
 export default function Me() {
   return (
@@ -36,13 +37,16 @@ export default function Me() {
         <p className="text-neutral-600 dark:text-neutral-400 mb-6">
           If you&apos;ve found my projects or dev notes useful, here&apos;s a PayNow QR code.
         </p>
-        <Image
-          src="/paynow.jpg"
-          width={300}
-          height={300}
-          alt="PayNow QR code"
-          className="rounded-lg"
-        />
+        <div className="flex flex-wrap items-center gap-8">
+          <Image
+            src="/paynow.jpg"
+            width={300}
+            height={300}
+            alt="PayNow QR code"
+            className="rounded-lg"
+          />
+          <KofiButton />
+        </div>
       </div>
     </>
   );
