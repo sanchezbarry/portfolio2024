@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
-import {InfoPopover} from "@/components/ui/info-popover";
+import { Tooltip } from "@/components/ui/tooltip-card";
 import { HomeNav } from "./HomeNav";
 
 export default function Hello() {
@@ -51,9 +51,11 @@ export default function Hello() {
             </div>
           </div>
           <div className="flex justify-space gap-1 items-start text-md font-normal text-neutral-600 dark:text-neutral-400 justify-center">
-            <InfoPopover title="Info" description="Throughout my site I use this icon - to explain the technologies and thought that goes behind this site."/>
             <p>
-              Frontend developer at InvestCloud with a background in marketing — I build things that are easy to use, not just easy to build. In my spare time I help small businesses get online properly. Need a site? Click <a href="#anchor_form"><u>here.</u></a>
+              <Tooltip content="Throughout my site I use this style to explain the technologies and thought that goes behind this site.">
+                <span className="cursor-help underline decoration-dotted">Frontend</span>
+              </Tooltip>{" "}
+              developer at InvestCloud with a background in marketing — I build things that are easy to use, not just easy to build. In my spare time I help small businesses get online properly. Need a site? Click <a href="#anchor_form"><u>here.</u></a>
               <br />
               <br />
               Here are some things I&apos;ve created, and the technologies I work with.

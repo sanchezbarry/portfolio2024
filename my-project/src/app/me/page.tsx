@@ -1,6 +1,20 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import { SaySomethingNice } from "@/components/SaySomethingNice";
 import KofiButton from "@/components/KofiButton";
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "I'm Sanchez, a frontend developer based in Singapore, currently at InvestCloud. My path to engineering started in marketing and copywriting.",
+  alternates: {
+    canonical: "/me",
+  },
+  openGraph: {
+    title: "About Me | Sanchez",
+    description: "I'm Sanchez, a frontend developer based in Singapore, currently at InvestCloud. My path to engineering started in marketing and copywriting.",
+    url: "https://www.sanchezbarry.com/me",
+  },
+};
 
 export default function Me() {
   return (

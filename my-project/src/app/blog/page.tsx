@@ -5,6 +5,14 @@ import ArticleItemList from "@/components/ArticleListItem";
 export const metadata: Metadata = {
   title: "Dev Notes",
   description: "Scribblings on what I've learnt as a software developer — from arrays to algorithms and data structures.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Dev Notes | Sanchez",
+    description: "Scribblings on what I've learnt as a software developer — from arrays to algorithms and data structures.",
+    url: "https://www.sanchezbarry.com/blog",
+  },
 };
 
 export default function Blog() {

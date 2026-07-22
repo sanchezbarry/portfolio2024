@@ -4,6 +4,14 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 export const metadata: Metadata = {
   title: "Resume",
   description: "Barry Sanchez's resume — frontend developer at InvestCloud with experience in React, Next.js, TypeScript, and Node.js.",
+  alternates: {
+    canonical: "/resume",
+  },
+  openGraph: {
+    title: "Resume | Sanchez",
+    description: "Barry Sanchez's resume — frontend developer at InvestCloud with experience in React, Next.js, TypeScript, and Node.js.",
+    url: "https://www.sanchezbarry.com/resume",
+  },
 };
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";

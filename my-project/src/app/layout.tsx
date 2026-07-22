@@ -30,6 +30,21 @@ export const metadata: Metadata = {
   },
   description: "Frontend developer at InvestCloud based in Singapore, with a background in marketing. I build things that are easy to use, not just easy to build.",
   metadataBase: new URL("https://www.sanchezbarry.com"),
+  keywords: ["Sanchez Barry", "Frontend Developer", "Software Engineer Singapore", "React Developer", "Next.js Developer", "InvestCloud"],
+  authors: [{ name: "Sanchez Barry", url: "https://www.sanchezbarry.com" }],
+  creator: "Sanchez Barry",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_SG",
@@ -59,9 +74,34 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sanchez Barry",
+    url: "https://www.sanchezbarry.com",
+    image: "https://www.sanchezbarry.com/headshot.jpeg",
+    jobTitle: "Frontend Developer",
+    worksFor: {
+      "@type": "Organization",
+      name: "InvestCloud",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Singapore",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/sanchez-barry/",
+      "https://github.com/sanchezbarry",
+    ],
+  };
+
   return (
     <html lang="en">
       <body className={`${cormorantGaramond.variable} ${poppins.variable} ${inter.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Providers>
           <Navbar />
             <FloatingButtonExample />

@@ -167,7 +167,7 @@ export function PaidProjects() {
               layoutId={`button-${card.title}-${id}`}
               className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 dark:bg-neutral-700 hover:bg-gray-500 dark:hover:bg-neutral-600 hover:text-white text-black dark:text-white mt-4 md:mt-0"
             >
-              {card.ctaText}
+              Learn More
             </motion.button>
           </motion.div>
         ))}

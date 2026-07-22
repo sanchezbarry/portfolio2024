@@ -14,7 +14,7 @@ const articlesDirectory = path.join(process.cwd(), "articles") //store the absol
 
 
 //function to get all the articles, sorted by date
-const getSortedArticles = (): ArticleItem[] => {
+export const getSortedArticles = (): ArticleItem[] => {
     //get all the file names in the articles directory
     const fileNames = fs.readdirSync(articlesDirectory) 
 
