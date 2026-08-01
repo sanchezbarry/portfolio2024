@@ -2,6 +2,7 @@
 import { Inter, Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Providers } from "./provider";
 import FloatingButtonExample from "@/components/FloatingAction"
 import { Analytics } from "@vercel/analytics/next"
@@ -106,6 +107,7 @@ export default function RootLayout({
           <Navbar />
             <FloatingButtonExample />
           {children}
+          <Footer />
           <Analytics />
           <SpeedInsights />
         </Providers>

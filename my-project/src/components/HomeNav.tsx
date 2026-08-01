@@ -107,27 +107,20 @@ export function HomeNav() {
           </NavigationMenuContent>
         </NavigationMenuItem> */}
 
-                <NavigationMenuItem>
-          <Link href="#projects" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Projects
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "rounded-full")}>
+            <Link href="#projects">Projects</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
-                <NavigationMenuItem>
-          <Link href="#career" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Career
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "rounded-full")}>
+            <Link href="#career">Career</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
-
-                <NavigationMenuItem>
-          <Link href="#anchor_form" passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Contact
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "rounded-full")}>
+            <Link href="#anchor_form">Contact</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
