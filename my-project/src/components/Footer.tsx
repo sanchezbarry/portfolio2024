@@ -24,7 +24,7 @@ const socials = [
   },
   {
     label: "Email",
-    href: "mailto:sanchezbarry@gmail.com",
+    href: "mailto:hello@sanchezbarry.com",
     icon: IconMail,
   },
 ];

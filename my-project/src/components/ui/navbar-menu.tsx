@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from 'next-themes';
 
 const transition = {
   type: "spring",
@@ -14,8 +13,6 @@ const transition = {
   restSpeed: 0.001,
 };
 
-let logoSrc = '/Sanchez_Logo_white-Icon.svg';
-
 export const MenuLogo = ({
   setActive,
   active,
@@ -25,28 +22,25 @@ export const MenuLogo = ({
   active: string | null;
   item: string;
 })=> {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  const logoSrc = (theme === 'dark' || resolvedTheme === 'dark') 
-    ? '/Sanchez_Logo_white-Icon.svg' 
-    : '/Sanchez_Logo_Black-Icon.svg';
-
   return (
   <div onMouseEnter={() => setActive(item)} className="relative ">
   <Link href={"/"} className="flex space-x-2">
+  {/* both variants render; CSS picks one, so the logo is in the server HTML */}
   <Image
-        src={logoSrc}
+        src="/Sanchez_Logo_Black-Icon.svg"
         width={26}
         height={26}
+        priority
         alt={"logo"}
-        className="flex-shrink-0 rounded-md shadow-2xl"
+        className="flex-shrink-0 rounded-md shadow-2xl dark:hidden"
+      />
+  <Image
+        src="/Sanchez_Logo_white-Icon.svg"
+        width={26}
+        height={26}
+        priority
+        alt={"logo"}
+        className="hidden flex-shrink-0 rounded-md shadow-2xl dark:block"
       />
   </Link>
   </div>

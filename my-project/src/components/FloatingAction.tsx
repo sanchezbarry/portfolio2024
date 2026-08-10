@@ -5,21 +5,9 @@ import { cn } from "@/utils/cn";
 import { PhoneOutgoing, Github, LinkedinIcon, PlusIcon, ArrowUp } from 'lucide-react';
 import Link from "next/link";
 import Button from "next";
-import React, { useState, useEffect } from "react";
-import { useTheme } from 'next-themes';
+import React from "react";
 
 export default function FloatingButtonExample() {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  const iconColor = (theme === 'dark' || resolvedTheme === 'dark') ? 'black' : 'white';
-
   const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
 
   function scrollToTop() {
@@ -57,7 +45,7 @@ export default function FloatingButtonExample() {
     <FloatingButton
       triggerContent={
         <button className="flex items-center justify-center h-12 w-12 rounded-full bg-black dark:bg-white text-black/100 z-10">
-          <PlusIcon color={iconColor}/>
+          <PlusIcon className="text-white dark:text-black" />
         </button>
       }>
       {items.map((item, key) => (

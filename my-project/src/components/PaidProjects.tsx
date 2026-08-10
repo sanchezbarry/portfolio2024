@@ -76,7 +76,7 @@ export function PaidProjects() {
               ref={ref}
               className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
+              <motion.div layoutId={`image-${active.title}-${id}`} className="shrink-0">
                 <img
                   width={200}
                   height={200}
@@ -86,8 +86,8 @@ export function PaidProjects() {
                 />
               </motion.div>
 
-              <div>
-                <div className="flex justify-between items-start p-4">
+              <div className="flex min-h-0 flex-col">
+                <div className="flex justify-between items-start p-4 shrink-0">
                   <div className="">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
@@ -112,13 +112,13 @@ export function PaidProjects() {
                     {active.ctaText}
                   </motion.a>
                 </div>
-                <div className="pt-4 relative px-4">
+                <div className="relative min-h-0 overflow-y-auto px-4 pt-4 [-webkit-overflow-scrolling:touch]">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    className="text-neutral-600 text-xs md:text-sm lg:text-base pb-10 flex flex-col items-start gap-4 dark:text-neutral-400"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -165,7 +165,7 @@ export function PaidProjects() {
             </div>
             <motion.button
               layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 dark:bg-neutral-700 hover:bg-gray-500 dark:hover:bg-neutral-600 hover:text-white text-black dark:text-white mt-4 md:mt-0"
+              className="w-32 shrink-0 py-2 text-sm rounded-full font-bold bg-gray-100 dark:bg-neutral-700 hover:bg-gray-500 dark:hover:bg-neutral-600 hover:text-white text-black dark:text-white mt-4 md:mt-0"
             >
               Learn More
             </motion.button>
@@ -210,6 +210,31 @@ export const CloseIcon = () => {
 };
 
 const cards = [
+  {
+    description: "Next.js, Sanity CMS, TailwindCSS, EmailJS",
+    title: "White Gate Partners Website",
+    src: "/whitegate.png",
+    ctaText: "Visit",
+    ctaLink: "https://www.whitegatepartners.sg/",
+    content: () => {
+      return (
+        <div className="space-y-3">
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Challenge</p>
+            <p>White Gate Partners is a Singapore executive search firm competing in a crowded recruitment market. They needed a site senior enough to win confidential C-suite mandates, and a way for consultants to publish market insights and field enquiries without going through a developer every time.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">The Solution</p>
+            <p>A custom Next.js and TailwindCSS build structured around their three service lines — Executive Search, Specialist Recruitment and Talent Solutions. Sanity CMS powers the Talent Perspectives section so the team can publish articles themselves, and EmailJS routes contact enquiries straight to their inbox with no backend to maintain. Fully responsive and SEO-optimised.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm mb-1">Stack</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">Next.js · Sanity CMS · TailwindCSS · EmailJS</p>
+          </div>
+        </div>
+      );
+    },
+  },
   {
     description: "Next.js, TailwindCSS, Supabase, Auth, Keystatic CMS, RSS Feed",
     title: "Chapel of Christ the King Website",

@@ -32,8 +32,14 @@ const config: Config = {
   		animation: {
   			spotlight: 'spotlight 2s ease .75s 1 forwards',
   			meteor: 'meteor 5s linear infinite',
+  			// hero entrance — CSS so it plays on first paint, without waiting for hydration
+  			'fade-up': 'fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
   		},
   		keyframes: {
+  			'fade-up': {
+  				'0%': { opacity: '0', transform: 'translateY(24px)' },
+  				'100%': { opacity: '1', transform: 'translateY(0)' }
+  			},
   			spotlight: {
   				'0%': {
   					opacity: '0',

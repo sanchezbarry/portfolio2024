@@ -14,12 +14,16 @@ export const FlipWords = ({
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  // the first word renders at its final state so it is visible in the server HTML
+  // instead of sitting at opacity 0 until framer-motion hydrates
+  const [hasFlipped, setHasFlipped] = useState(false);
 
   // thanks for the fix Julian - https://github.com/Julian-AT
   const startAnimation = useCallback(() => {
     const word = words[words.indexOf(currentWord) + 1] || words[0];
     setCurrentWord(word);
     setIsAnimating(true);
+    setHasFlipped(true);
   }, [currentWord, words]);
 
   useEffect(() => {
@@ -36,7 +40,7 @@ export const FlipWords = ({
       }}
     >
       <motion.div
-        initial={{
+        initial={hasFlipped && {
           opacity: 0,
           y: 10,
         }}
@@ -67,7 +71,7 @@ export const FlipWords = ({
         {currentWord.split(" ").map((word, wordIndex) => (
           <motion.span
             key={word + wordIndex}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+            initial={hasFlipped && { opacity: 0, y: 10, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{
               delay: wordIndex * 0.3,
@@ -78,7 +82,7 @@ export const FlipWords = ({
             {word.split("").map((letter, letterIndex) => (
               <motion.span
                 key={word + letterIndex}
-                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+                initial={hasFlipped && { opacity: 0, y: 10, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
                   delay: wordIndex * 0.3 + letterIndex * 0.05,

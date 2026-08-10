@@ -84,18 +84,18 @@ export default function ResumeWeb() {
 </button>
 </Link >
 
-<Link className="pr-3 pt-3" href="mailto:sanchezbarry@gmail.com" rel="noopener noreferrer" target="_blank">
+<Link className="pr-3 pt-3" href="mailto:hello@sanchezbarry.com" rel="noopener noreferrer" target="_blank">
             <button className="min-w-[140px] px-12 py-4 rounded-full bg-[#242424] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#464646] transition-colors duration-200">
   Email
 </button>
 </Link>
 
-{/* <Link className="pr-3 pt-3" href="mailto:sanchezbarry@gmail.com" rel="noopener noreferrer" target="_blank">
+{/* <Link className="pr-3 pt-3" href="mailto:hello@sanchezbarry.com" rel="noopener noreferrer" target="_blank">
             <button className="min-w-[140px] px-12 py-4 rounded-full bg-[#187542] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#3abd4f] transition-colors duration-200">
   WhatsApp
 </button>
 </Link> */}
-            {/* <div>Email: <a href="sanchezbarry@gmail.com" className="underline">sanchezbarry@gmail.com</a></div>
+            {/* <div>Email: <a href="hello@sanchezbarry.com" className="underline">hello@sanchezbarry.com</a></div>
             <div>LinkedIn: <a href="https://www.linkedin.com/in/sanchez-barry/" className="underline">https://www.linkedin.com/in/sanchez-barry/</a></div>
             <div>GitHub: <a href="https://github.com/sanchezbarry" className="underline">https://github.com/sanchezbarry</a></div> */}
           </div>
