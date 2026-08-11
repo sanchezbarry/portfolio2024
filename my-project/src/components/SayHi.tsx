@@ -5,41 +5,56 @@ import { Tooltip } from "../components/ui/tooltip-card";
 import { cn } from "@/utils/cn";
 import React, { useRef, useState  } from 'react';
 import emailjs from 'emailjs-com';
-import ReCAPTCHA from "react-google-recaptcha";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
+// the action name is sent to Google and checked again server-side, so a token
+// minted for some other action can't be replayed against this form
+const RECAPTCHA_ACTION = "contact_form";
+
+// the provider injects the reCAPTCHA script, so it has to sit above the form
+// rather than inside it — scoped here so the script only loads on pages with the form
 export function SayHi() {
-  const [capVal, setCapVal] = useState<string | null>(null);
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+      scriptProps={{ async: true, defer: true }}
+    >
+      <SayHiForm />
+    </GoogleReCaptchaProvider>
+  );
+}
+
+function SayHiForm() {
   const [isLoading, setIsLoading] = useState(false);
   const form = useRef<HTMLFormElement>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
-  if (!capVal) {
-    alert("Please complete the reCAPTCHA");
+  if (!executeRecaptcha) {
+    alert("Spam protection is still loading. Please try again in a moment.");
     return;
   }
 
   setIsLoading(true);
 
   try {
+    // v3 tokens are single-use and expire after ~2 minutes, so mint one per submit
+    const token = await executeRecaptcha(RECAPTCHA_ACTION);
+
     // Step 1: Verify reCAPTCHA token with YOUR API first
     const verifyRes = await fetch("/api/verify-recaptcha", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: capVal }),
+      body: JSON.stringify({ token, action: RECAPTCHA_ACTION }),
     });
 
     const verifyJson = await verifyRes.json();
 
-    console.log("reCAPTCHA verification response:", verifyJson);
-
     if (!verifyJson.success) {
       console.error("reCAPTCHA verification failed:", verifyJson);
-      alert("reCAPTCHA verification failed. Please try again.");
-      recaptchaRef.current?.reset();
-      setCapVal(null);
+      alert("We couldn't verify that you're human. Please try again.");
       setIsLoading(false);
       return;
     }
@@ -56,21 +71,17 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           console.log("EmailJS success:", result.text);
           alert('Message sent successfully!');
           form.current?.reset();
-          recaptchaRef.current?.reset();
-          setCapVal(null);
         }, (error) => {
           console.error("EmailJS error:", error.text);
           alert('Failed to send the message, please try again.');
-          recaptchaRef.current?.reset();
-          setCapVal(null);
         })
         .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
   } catch (err) {
     console.error("Error:", err);
     alert("An error occurred. Please try again.");
-    recaptchaRef.current?.reset();
-    setCapVal(null);
     setIsLoading(false);
   }
 };
@@ -114,21 +125,36 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           />
         </LabelInputContainer>
 
-        <div className="mb-4 w-full">
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-            onChange={(val) => setCapVal(val)}          
-          />
-        </div>
-
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:opacity-50"
-          disabled={!capVal || isLoading}
+          disabled={isLoading}
           type="submit"
         >
           {isLoading ? "Sending..." : "Submit"}
         </button>
+
+        {/* required by Google when the reCAPTCHA badge is hidden — see globals.css */}
+        <p className="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
+          This site is protected by reCAPTCHA and the Google{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://policies.google.com/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            Terms of Service
+          </a>{" "}
+          apply.
+        </p>
       </form>
     </div>
   );

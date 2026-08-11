@@ -118,3 +118,9 @@
     @apply bg-background text-foreground;
   }
 }
+/* The reCAPTCHA v3 badge floats bottom-right and collides with the FloatingAction
+   button. Google allows hiding it as long as the disclosure text is shown instead,
+   which SayHi renders under the submit button. */
+.grecaptcha-badge {
+  visibility: hidden;
+}

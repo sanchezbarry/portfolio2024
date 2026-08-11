@@ -36,7 +36,7 @@ export default function Footer() {
     <footer className="mt-20 border-t border-neutral-200 dark:border-neutral-800">
       <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          &copy; {year} Sanchez Barry. All rights reserved.
+          &copy; {year} Studio SB | Sanchez Barry. All rights reserved.
         </p>
 
         <div className="flex items-center gap-3">
