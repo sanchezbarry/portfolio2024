@@ -1,6 +1,6 @@
-// Reads blog posts out of Payload. Replaces the old markdown reader in
-// lib/articles.ts; the returned shapes are deliberately identical so the
-// existing components did not have to change.
+// Reads blog posts out of Payload, which is the sole source of blog content.
+// The shapes here are a holdover from the markdown reader this replaced, kept
+// so that ArticleListItem and the blog pages did not need to change.
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
