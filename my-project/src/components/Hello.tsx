@@ -5,6 +5,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { Meteors } from "@/components/ui/meteors";
 import Image from "next/image";
 import { Tooltip } from "@/components/ui/tooltip-card";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { HomeNav } from "./HomeNav";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
@@ -40,13 +41,19 @@ export default function Hello() {
             style={stagger(0)}
             className="flex animate-fade-up items-center gap-4 md:gap-5 motion-reduce:animate-none"
           >
-            <Image
-              src="/headshot.jpeg"
-              width={72}
-              height={72}
+            <AnimatedTooltip
               priority
-              alt="Sanchez Barry"
-              className="h-14 w-14 flex-shrink-0 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/15 md:h-[72px] md:w-[72px]"
+              items={[
+                {
+                  id: 1,
+                  name: "Problem Solver.",
+                  designation: "Coffee chat?",
+                  image: "/headshot.jpeg",
+                },
+              ]}
+              // keep the ring the hero already used rather than the component's
+              // default white border, which would disappear on a light page
+              imageClassName="h-14 w-14 flex-shrink-0 border-0 object-center ring-1 ring-black/10 dark:ring-white/15 md:h-[72px] md:w-[72px]"
             />
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-neutral-900 dark:text-neutral-50 md:text-6xl">
               Hi, I&apos;m{" "}
