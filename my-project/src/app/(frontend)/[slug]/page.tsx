@@ -1,27 +1,33 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
 import moment from "moment";
-import { getArticleData, getSortedArticles } from "../../../lib/articles";
+import { getArticleData, getSortedArticles } from "@/lib/posts";
 
 export async function generateStaticParams() {
-  return getSortedArticles().map((article) => ({ slug: article.id }));
+  const articles = await getSortedArticles();
+  return articles.map((article) => ({ slug: article.id }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const article = await getArticleData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getArticleData(slug);
+
+  if (!article) return {};
+
   const description = `Dev Notes — ${article.title}. Notes on ${article.category}.`;
 
   return {
     title: article.title,
     description,
     alternates: {
-      canonical: `/${params.slug}`,
+      canonical: `/${slug}`,
     },
     openGraph: {
       title: `${article.title} | Dev Notes`,
       description,
-      url: `https://www.sanchezbarry.com/${params.slug}`,
+      url: `https://www.sanchezbarry.com/${slug}`,
       type: "article",
       publishedTime: moment(article.date, "MMMM Do, YYYY").toISOString(),
     },
@@ -33,8 +39,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const Article = async ({ params } : { params: { slug: string } }) => {
-    const articleData = await getArticleData(params.slug)
+const Article = async ({ params } : { params: Promise<{ slug: string }> }) => {
+    const { slug } = await params
+    const articleData = await getArticleData(slug)
+
+    // Unknown slug, or a post that is still a draft.
+    if (!articleData) notFound()
 
     const articleJsonLd = {
         "@context": "https://schema.org",
@@ -46,7 +56,7 @@ const Article = async ({ params } : { params: { slug: string } }) => {
             "@type": "Person",
             name: "Sanchez Barry",
         },
-        url: `https://www.sanchezbarry.com/${params.slug}`,
+        url: `https://www.sanchezbarry.com/${slug}`,
     };
 
     return (

@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
-
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+// @ts-expect-error tailwind ships no types for its internal utils
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   // content: [
@@ -103,7 +102,7 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [addVariablesForColors, require("tailwindcss-animate")],
+  plugins: [addVariablesForColors, tailwindcssAnimate],
 };
 
 function addVariablesForColors({ addBase, theme }: any) {

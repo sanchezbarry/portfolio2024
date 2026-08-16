@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useOnClickOutside } from 'usehooks-ts';
+import { AnimatePresence, motion } from 'motion/react';
+import { useOutsideClick } from '@/hooks/use-outside-click';
 
 type FloatingButtonProps = {
   className?: string;
@@ -42,10 +42,10 @@ const btn = {
 };
 
 function FloatingButton({ className, children, triggerContent }: FloatingButtonProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  useOnClickOutside(ref, () => setIsOpen(false));
+  useOutsideClick(ref, () => setIsOpen(false));
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-center">

@@ -19,6 +19,11 @@
 import { list } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
+// Payload's media uploads share this blob store, namespaced under cms/.
+// Testimonial photos predate that and sit at the root, so exclude anything
+// the CMS owns rather than trying to match a prefix these don't have.
+const CMS_PREFIX = "cms/";
+
 export async function GET() {
   try {
     // Fetch the list of blobs from Vercel Blob
@@ -26,8 +31,12 @@ export async function GET() {
       token: process.env.BLOB_READ_WRITE_TOKEN, // Use the private environment variable
     });
 
+    const testimonials = response.blobs.filter(
+      (blob) => !blob.pathname.startsWith(CMS_PREFIX)
+    );
+
     // Return the blobs as JSON
-    return NextResponse.json(response.blobs);
+    return NextResponse.json(testimonials);
   } catch (error) {
     console.error("Error fetching testimonials:", error);
     return NextResponse.json({ error: "Failed to fetch testimonials" }, { status: 500 });

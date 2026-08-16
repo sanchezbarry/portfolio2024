@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,9 +8,9 @@ import FloatingButtonExample from "@/components/FloatingAction"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const inter = Inter({ 
+const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter" });
+  variable: "--font-bricolage-grotesque" });
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -96,9 +96,12 @@ export default function RootLayout({
     ],
   };
 
+  // next-themes sets class="dark" and color-scheme on <html> from the client,
+  // which the server cannot know ahead of time. suppressHydrationWarning covers
+  // that one element only; it does not hide mismatches elsewhere in the tree.
   return (
-    <html lang="en">
-      <body className={`${cormorantGaramond.variable} ${poppins.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${cormorantGaramond.variable} ${poppins.variable} ${bricolageGrotesque.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
