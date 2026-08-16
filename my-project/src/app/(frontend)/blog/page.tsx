@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getCategorisedArticles } from "../../../lib/articles";
+import { getCategorisedArticles } from "@/lib/posts";
 import ArticleItemList from "@/components/ArticleListItem";
 
 export const metadata: Metadata = {
@@ -15,9 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Blog() {
-  const articles = getCategorisedArticles()
-  console.log(articles)
+export default async function Blog() {
+  const articles = await getCategorisedArticles()
   return <>
   <section className="mx-auto w-11/12 md:w-1/2 pt-20 mt-20 flex flex-col gap-16 mb-20">
     <header className="font-cormorantGaramond font-light text-6xl  text-center">

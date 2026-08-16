@@ -1,9 +1,19 @@
 /** @type {import('next').NextConfig} */
 
 import 'dotenv/config';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { withPayload } from '@payloadcms/next/withPayload';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
-  
+  // The repo root carries a stray package-lock.json from an older layout, so
+  // Next cannot infer the workspace root on its own. Pin it to this app.
+  turbopack: {
+    root: dirname,
+  },
+
   images: {
     remotePatterns: [
       {
@@ -30,4 +40,6 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// withPayload registers Payload's server-only externals — without it the
+// bundler tries to follow drizzle-kit's dynamic `require('@libsql/...')`.
+export default withPayload(nextConfig);

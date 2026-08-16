@@ -1,17 +1,19 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
 
 const transition = {
+  // `as const` keeps `type` as the literal "spring" rather than widening to
+  // string, which motion's Transition type requires.
   type: "spring",
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
   restDelta: 0.001,
   restSpeed: 0.001,
-};
+} as const;
 
 export const MenuLogo = ({
   setActive,

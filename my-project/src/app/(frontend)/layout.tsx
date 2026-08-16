@@ -96,8 +96,11 @@ export default function RootLayout({
     ],
   };
 
+  // next-themes sets class="dark" and color-scheme on <html> from the client,
+  // which the server cannot know ahead of time. suppressHydrationWarning covers
+  // that one element only; it does not hide mismatches elsewhere in the tree.
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${cormorantGaramond.variable} ${poppins.variable} ${bricolageGrotesque.variable}`}>
         <script
           type="application/ld+json"

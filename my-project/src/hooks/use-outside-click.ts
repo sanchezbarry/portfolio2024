@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 
 export const useOutsideClick = (
-  ref: React.RefObject<HTMLDivElement>,
+  // React 19 types `useRef<T>(null)` as RefObject<T | null>; the listener below
+  // already guards on `ref.current`, so accepting null here is safe.
+  ref: React.RefObject<HTMLDivElement | null>,
   callback: Function
 ) => {
   useEffect(() => {
