@@ -27,7 +27,7 @@ const config: Config = {
   		// Segoe UI on Windows and Roboto on Linux — the same page in a
   		// different typeface per visitor.
   		fontFamily: {
-  			sans: ['var(--font-alte-haas-grotesk)', ...defaultTheme.fontFamily.sans],
+  			sans: ['var(--font-metropolis)', ...defaultTheme.fontFamily.sans],
   		},
   		boxShadow: {
   			input: '`0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`'

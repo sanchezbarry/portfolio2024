@@ -13,17 +13,22 @@ const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage-grotesque" });
 
-// The body font. Self-hosted rather than pulled from fonts.cdnfonts.com, whose
-// stylesheet listed `local('Alte Haas Grotesk')` ahead of its own URL — so any
-// machine with the font installed rendered its own copy instead, and anyone
-// whose ad blocker or DNS ate the CDN silently dropped to the OS default.
-// Only 400 and 700 exist; 300/500/600 resolve to these by CSS weight matching.
-const alteHaasGrotesk = localFont({
+// The body font (Chris Simpson, CC0). One real face per weight the site uses,
+// so nothing is synthesised — the browser never has to fake a bold, which is
+// what made weights render differently from one machine to the next.
+// No italics and no 300: the site's only `font-light` body element is the
+// /blog intro, and next/font preloads every declared face, so carrying it
+// would cost 26KB on every page for one paragraph. It resolves to 400.
+// 307 codepoints, em and en dash included, so body copy needs no second
+// family behind it to fill in missing punctuation.
+const metropolis = localFont({
   src: [
-    { path: "../../fonts/AlteHaasGroteskRegular.woff2", weight: "400", style: "normal" },
-    { path: "../../fonts/AlteHaasGroteskBold.woff2", weight: "700", style: "normal" },
+    { path: "../../fonts/Metropolis-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/Metropolis-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/Metropolis-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/Metropolis-Bold.woff2", weight: "700", style: "normal" },
   ],
-  variable: "--font-alte-haas-grotesk",
+  variable: "--font-metropolis",
   display: "swap",
 })
 
@@ -102,9 +107,19 @@ export default function RootLayout({
   // next-themes sets class="dark" and color-scheme on <html> from the client,
   // which the server cannot know ahead of time. suppressHydrationWarning covers
   // that one element only; it does not hide mismatches elsewhere in the tree.
+  //
+  // The font variables go on <html>, not <body>: Tailwind's preflight sets
+  // `font-family` on html from `fontFamily.sans`, and a custom property defined
+  // on body is not visible there. Declared any lower, the var() in that rule is
+  // undefined, the whole declaration is dropped as invalid at computed-value
+  // time, and text without a `font-sans` class falls back to the browser serif.
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${alteHaasGrotesk.variable} ${bricolageGrotesque.variable}`}>
+    <html
+      lang="en"
+      className={`${metropolis.variable} ${bricolageGrotesque.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
