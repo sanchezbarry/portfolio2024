@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
+import { revalidatePost, revalidatePostDelete } from './hooks/revalidatePost'
+
 const slugify = (value: string): string =>
   value
     .toLowerCase()
@@ -28,6 +30,10 @@ export const Posts: CollectionConfig = {
   },
   versions: {
     drafts: true,
+  },
+  hooks: {
+    afterChange: [revalidatePost],
+    afterDelete: [revalidatePostDelete],
   },
   fields: [
     {

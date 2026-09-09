@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
-import { Bricolage_Grotesque, Cormorant_Garamond, Poppins } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,16 +13,18 @@ const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage-grotesque" });
 
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant-garamond",
-  weight: ["400"]
-})
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["400", "600"]
+// The body font. Self-hosted rather than pulled from fonts.cdnfonts.com, whose
+// stylesheet listed `local('Alte Haas Grotesk')` ahead of its own URL — so any
+// machine with the font installed rendered its own copy instead, and anyone
+// whose ad blocker or DNS ate the CDN silently dropped to the OS default.
+// Only 400 and 700 exist; 300/500/600 resolve to these by CSS weight matching.
+const alteHaasGrotesk = localFont({
+  src: [
+    { path: "../../fonts/AlteHaasGroteskRegular.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/AlteHaasGroteskBold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-alte-haas-grotesk",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -101,7 +104,7 @@ export default function RootLayout({
   // that one element only; it does not hide mismatches elsewhere in the tree.
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cormorantGaramond.variable} ${poppins.variable} ${bricolageGrotesque.variable}`}>
+      <body className={`${alteHaasGrotesk.variable} ${bricolageGrotesque.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 // @ts-expect-error tailwind ships no types for its internal utils
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 import tailwindcssAnimate from "tailwindcss-animate";
@@ -20,6 +21,14 @@ const config: Config = {
   darkMode: ["class"],
   theme: {
   	extend: {
+  		// Overriding `sans` re-points two things at once: the `font-sans`
+  		// utility (24 usages, several on body copy) and preflight's `html`
+  		// rule. Both previously resolved to `system-ui`, i.e. SF Pro on macOS,
+  		// Segoe UI on Windows and Roboto on Linux — the same page in a
+  		// different typeface per visitor.
+  		fontFamily: {
+  			sans: ['var(--font-alte-haas-grotesk)', ...defaultTheme.fontFamily.sans],
+  		},
   		boxShadow: {
   			input: '`0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`'
   		},

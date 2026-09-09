@@ -65,7 +65,7 @@ const Article = async ({ params } : { params: Promise<{ slug: string }> }) => {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
             />
-            <div className="flex justify-between font-poppins">
+            <div className="flex justify-between">
                 <Link href="/blog" className="flex flex-row gap-1 place-items-center">
                     <ArrowLeft width={20} />
                     <span>back</span>

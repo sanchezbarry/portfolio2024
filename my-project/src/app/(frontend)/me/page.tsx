@@ -20,7 +20,7 @@ export default function Me() {
   return (
     <>
       <div className="mt-36 max-w-2xl mx-auto px-10">
-        <h1 className="font-cormorantGaramond font-light text-5xl mb-6">About Me</h1>
+        <h1 className="font-light text-5xl mb-6">About Me</h1>
         <div className="space-y-4 text-lg text-neutral-700 dark:text-neutral-300">
           <p>
             I&apos;m Sanchez - a frontend developer based in Singapore, currently working at InvestCloud building tools used by financial institutions around the world.
@@ -38,7 +38,7 @@ export default function Me() {
       </div>
 
       <div className="mt-20 max-w-2xl mx-auto px-10">
-        <h2 className="font-cormorantGaramond font-light text-3xl mb-4">Experimental Space</h2>
+        <h2 className="font-light text-3xl mb-4">Experimental Space</h2>
         <p className="text-neutral-600 dark:text-neutral-400">
           This page is also where I push work-in-progress features to production. Feel free to poke around and let me know if something breaks.
         </p>
@@ -47,7 +47,7 @@ export default function Me() {
       <SaySomethingNice />
 
       <div className="mt-20 max-w-2xl mx-auto px-10 pb-20">
-        <h2 className="font-cormorantGaramond font-light text-3xl mb-4">Support My Work</h2>
+        <h2 className="font-light text-3xl mb-4">Support My Work</h2>
         <p className="text-neutral-600 dark:text-neutral-400 mb-6">
           If you&apos;ve found my projects or dev notes useful, here&apos;s a PayNow QR code.
         </p>
