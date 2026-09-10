@@ -13,22 +13,25 @@ const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage-grotesque" });
 
-// The body font (Chris Simpson, CC0). One real face per weight the site uses,
-// so nothing is synthesised — the browser never has to fake a bold, which is
-// what made weights render differently from one machine to the next.
-// No italics and no 300: the site's only `font-light` body element is the
-// /blog intro, and next/font preloads every declared face, so carrying it
-// would cost 26KB on every page for one paragraph. It resolves to 400.
-// 307 codepoints, em and en dash included, so body copy needs no second
-// family behind it to fill in missing punctuation.
-const metropolis = localFont({
+// The body font (Mirat-Masson after Sora Sagano, SIL OFL). 418 codepoints,
+// em and en dash included, so body copy needs no second family behind it.
+//
+// The family jumps Light 300 → Regular 400 → Black 900 with nothing between,
+// and the site asks for 500/600/700. Black is declared here as 700 so that
+// `font-bold` matches a real face outright: left at 900 the browser would pick
+// it for 600 and 700 anyway, and the point is that nothing gets synthesised.
+// 500 resolves down to Regular. No italics.
+//
+// Light 300 is the resting weight for body copy — see the `body` rule in
+// globals.css. Regular read a shade heavy at paragraph sizes, and this family
+// has no 350 to split the difference.
+const amiamie = localFont({
   src: [
-    { path: "../../fonts/Metropolis-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../../fonts/Metropolis-Medium.woff2", weight: "500", style: "normal" },
-    { path: "../../fonts/Metropolis-SemiBold.woff2", weight: "600", style: "normal" },
-    { path: "../../fonts/Metropolis-Bold.woff2", weight: "700", style: "normal" },
+    { path: "../../fonts/Amiamie-Light.woff2", weight: "300", style: "normal" },
+    { path: "../../fonts/Amiamie-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/Amiamie-Black.woff2", weight: "700", style: "normal" },
   ],
-  variable: "--font-metropolis",
+  variable: "--font-amiamie",
   display: "swap",
 })
 
@@ -116,7 +119,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${metropolis.variable} ${bricolageGrotesque.variable}`}
+      className={`${amiamie.variable} ${bricolageGrotesque.variable}`}
       suppressHydrationWarning
     >
       <body>

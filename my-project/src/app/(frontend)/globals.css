@@ -117,7 +117,16 @@
   body {
     @apply bg-background text-foreground;
     /* Family comes from Tailwind's `fontFamily.sans`, which preflight applies
-       to <html>. Metropolis is self-hosted via next/font in layout.tsx. */
+       to <html>. Amiamie is self-hosted via next/font in layout.tsx. */
+    /* Amiamie Regular reads heavy at paragraph sizes, so body copy rests on
+       Light. Every heading sets its own weight, so none of them inherit this. */
+    font-weight: 300;
+  }
+  /* Preflight leaves these at `bolder`, which from a 300 parent computes to
+     400 — markup-level bold in blog content would come out barely emphasised.
+     Pin it so <strong> matches the `font-bold` utility. */
+  b, strong {
+    font-weight: 700;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-bricolage-grotesque) !important;
