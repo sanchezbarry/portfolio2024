@@ -41,17 +41,33 @@ export const getSortedArticles = async (): Promise<ArticleItem[]> => {
     title: post.title,
     date: post.date,
     category: post.category,
+    sortOrder: post.sortOrder,
   }))
 }
 
-/** Published posts bucketed by category, for the /blog index. */
+/**
+ * Published posts bucketed by category, for the /blog index.
+ *
+ * Categories keep appearing in date order — the first post of each to be
+ * written puts its category on the page — while posts inside a category follow
+ * their `sortOrder`. Sorting the whole list by `sortOrder` up front would have
+ * reshuffled the categories themselves, which is not what the field is for.
+ */
 export const getCategorisedArticles = async (): Promise<Record<string, ArticleItem[]>> => {
   const sorted = await getSortedArticles()
 
-  return sorted.reduce<Record<string, ArticleItem[]>>((acc, article) => {
+  const categorised = sorted.reduce<Record<string, ArticleItem[]>>((acc, article) => {
     ;(acc[article.category] ||= []).push(article)
     return acc
   }, {})
+
+  for (const articles of Object.values(categorised)) {
+    // Array#sort is stable, so posts left unordered hold the date ordering
+    // getSortedArticles already gave them, behind everything that is numbered.
+    articles.sort((a, b) => (a.sortOrder ?? Infinity) - (b.sortOrder ?? Infinity))
+  }
+
+  return categorised
 }
 
 /**

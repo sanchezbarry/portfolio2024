@@ -14,7 +14,7 @@ export const Posts: CollectionConfig = {
   slug: 'posts',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'date', '_status'],
+    defaultColumns: ['title', 'category', 'sortOrder', 'date', '_status'],
   },
   access: {
     // Anonymous readers only ever see published posts. Logged-in editors see
@@ -70,6 +70,21 @@ export const Posts: CollectionConfig = {
       admin: {
         position: 'sidebar',
         description: 'Groups posts on the /blog index, e.g. "data structures".',
+      },
+    },
+    {
+      // Not named `order`: that is a reserved word in Postgres, and while
+      // Drizzle would quote it, every hand-written query against the table
+      // would have to remember to.
+      name: 'sortOrder',
+      label: 'Order in category',
+      type: 'number',
+      min: 1,
+      admin: {
+        position: 'sidebar',
+        step: 1,
+        description:
+          'Position within the category on /blog — 1 first. Numbers only need to ascend, so gaps are fine. Leave blank and the post falls to the end of its category, oldest first.',
       },
     },
     {

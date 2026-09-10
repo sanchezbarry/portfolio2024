@@ -15,6 +15,7 @@ import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "motion/react";
 import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { Badge } from "@/components/ui/badge";
 
 interface CarouselProps {
   items: React.JSX.Element[];
@@ -226,13 +227,27 @@ export const Card = ({
                 {card.category}
               </motion.p>
               
-              <motion.p
-                layoutId={layout ? `category-${card.title}` : undefined}
-                // className="relative grid select-none items-center whitespace-nowrap rounded-full bg-white py-1.5 px-3 font-sans text-xs font-bold uppercase text-black"
-                className="pt-1 text-base font-small text-black dark:text-white"
+              {/* `tech` is authored as a pipe-separated string on each project,
+                  so the split into pills happens here rather than in the data —
+                  every card gets them without touching eight entries. */}
+              <motion.div
+                layoutId={layout ? `tech-${card.title}` : undefined}
+                className="flex flex-wrap gap-2 pt-3"
               >
-                {card.tech}
-              </motion.p>
+                {card.tech
+                  .split("|")
+                  .map((item) => item.trim())
+                  .filter(Boolean)
+                  .map((item) => (
+                    <Badge
+                      key={item}
+                      variant="secondary"
+                      className="rounded-full px-3 py-1 text-xs font-medium"
+                    >
+                      {item}
+                    </Badge>
+                  ))}
+              </motion.div>
               <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
                 className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white"

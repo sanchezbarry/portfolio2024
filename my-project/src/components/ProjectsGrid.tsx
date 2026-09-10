@@ -4,6 +4,35 @@ import Link from "next/link"
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 
+// Every project modal closes with the same one or two links, so the styling
+// lives here rather than in fourteen copies of one class string.
+const projectLinkStyles = {
+  base: "mr-3 px-10 py-4 rounded-full tracking-widest uppercase font-bold transition duration-200",
+  // Deliberately the hero's "See my work" treatment, so the site has a single
+  // primary button look rather than two competing ones.
+  primary:
+    "bg-gradient-to-br from-black to-neutral-700 text-white shadow-[0px_1px_0px_0px_#ffffff40_inset] hover:scale-[1.03] active:scale-95 dark:from-zinc-100 dark:to-zinc-300 dark:text-black",
+  // The outlined style every button in these modals used to share.
+  secondary:
+    "shadow-[inset_0_0_0_2px_#616467] bg-transparent text-black hover:bg-[#616467] hover:text-white dark:text-neutral-200",
+} as const;
+
+const ProjectLink = ({
+  href,
+  variant,
+  children,
+}: {
+  href: string;
+  variant: "primary" | "secondary";
+  children: React.ReactNode;
+}) => (
+  <Link href={href} target="_blank" rel="noopener noreferrer">
+    <button className={`${projectLinkStyles.base} ${projectLinkStyles[variant]}`}>
+      {children}
+    </button>
+  </Link>
+);
+
 export function ProjectsGrid() {
   const cards = data.map((card, index) => (
     <Card key={card.src} card={card} index={index} />
@@ -45,23 +74,11 @@ const CoffeeContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/coffee" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/coffee" variant="secondary">GitHub</ProjectLink>
 
 
 
-        <Link href="https://coffee-cu87.onrender.com/" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://coffee-cu87.onrender.com/" variant="primary">Website</ProjectLink>
     </>
   );
 };
@@ -89,23 +106,11 @@ const AlcoholContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/sanchezbarry" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/sanchezbarry" variant="secondary">GitHub</ProjectLink>
 
 
 
-        <Link href="https://sanchezbarry.github.io/sanchezbarry/#" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://sanchezbarry.github.io/sanchezbarry/#" variant="primary">Website</ProjectLink>
     </>
   );
 };
@@ -133,21 +138,9 @@ const SoftwareContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/Software-Engineer-Job-Portal-Frontend" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/Software-Engineer-Job-Portal-Frontend" variant="secondary">GitHub</ProjectLink>
 
-        <Link href="https://lunfy.github.io/Software-Engineer-Job-Portal-Frontend/" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://lunfy.github.io/Software-Engineer-Job-Portal-Frontend/" variant="primary">Website</ProjectLink>
 
 
         
@@ -177,13 +170,7 @@ const WorkoutContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/Workouter-App" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/Workouter-App" variant="secondary">GitHub</ProjectLink>
 
     </>
   );
@@ -211,23 +198,11 @@ const ChurchContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/cck" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/cck" variant="secondary">GitHub</ProjectLink>
 
 
 
-        <Link href="https://cck.org.sg/sermons.html" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://cck.org.sg/sermons.html" variant="primary">Website</ProjectLink>
     </>
   );
 };
@@ -257,13 +232,7 @@ const SanchezOneContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/portfolio" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/portfolio" variant="secondary">GitHub</ProjectLink>
 
         {/* <Link href="https://cck.org.sg/sermons.html">
         <button className="shadow-[inset_0_0_0_2px_#616467] text-white px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#dde0e4] hover:text-black transition duration-200">
@@ -298,21 +267,9 @@ const SanchezTwoContent = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/portfolio2024" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/portfolio2024" variant="secondary">GitHub</ProjectLink>
 
-        <Link href="https://sanchezbarry.com" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://sanchezbarry.com" variant="primary">Website</ProjectLink>
 
     </>
   );
@@ -342,21 +299,9 @@ const FPL = () => {
             </p>
 
       </div>
-      <Link href="https://github.com/sanchezbarry/fplstats" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          GitHub
-          
-        </button>
-        </Link>
+      <ProjectLink href="https://github.com/sanchezbarry/fplstats" variant="secondary">GitHub</ProjectLink>
 
-        <Link href="https://fplstats-sag.vercel.app/" target="_blank" rel="noopener noreferrer">
-        <button className="mr-3 shadow-[inset_0_0_0_2px_#616467] text-black px-10 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-          
-          Website
-          
-        </button>
-        </Link>
+        <ProjectLink href="https://fplstats-sag.vercel.app/" variant="primary">Website</ProjectLink>
 
     </>
   );

@@ -134,6 +134,10 @@ export interface Post {
    * Groups posts on the /blog index, e.g. "data structures".
    */
   category: string;
+  /**
+   * Position within the category on /blog — 1 first. Numbers only need to ascend, so gaps are fine. Leave blank and the post falls to the end of its category, oldest first.
+   */
+  sortOrder?: number | null;
   date: string;
   content: {
     root: {
@@ -285,6 +289,7 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   category?: T;
+  sortOrder?: T;
   date?: T;
   content?: T;
   updatedAt?: T;
